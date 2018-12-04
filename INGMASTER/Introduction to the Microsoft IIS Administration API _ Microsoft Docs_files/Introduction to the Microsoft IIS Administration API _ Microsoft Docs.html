@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://docs.microsoft.com/en-us/IIS-Administration/#comments-container -->
+<html class="js hasSidebar hasPageActions hasBreadcrumb noTouch" lang="en-us" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="Introduction to the Microsoft IIS Administration API">
+	<meta property="og:image" content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png">
+
+
+		<meta name="uid" content="introduction">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="search.ms_docsetname" content="IIS-Administration">
+<meta name="version" content="0">
+<meta name="locale" content="en-us">
+<meta name="site_name" content="Docs">
+<meta name="search.ms_product" content="MSDN">
+<meta name="depot_name" content="MSDN.IIS-Administration">
+<meta name="author" content="shirhatti">
+<meta name="updated_at" content="2017-07-06 06:25 PM">
+<meta name="gitcommit" content="https://github.com/MicrosoftDocs/IIS.Administration-docs/blob/e2610316d9530cf5a6d9644f694c0da4b5ff4e82/IIS-Administration/index.md">
+<meta name="original_content_git_url" content="https://github.com/MicrosoftDocs/IIS.Administration-docs/blob/live/IIS-Administration/index.md">
+<meta name="document_id" content="0658812b-9e6d-556d-b45e-670b7ca74f02">
+<meta name="document_version_independent_id" content="405398a9-a365-94a3-3c6c-13330af74234">
+<meta name="pagetype" content="Conceptual">
+<meta name="toc_rel" content="toc.json">
+<meta name="word_count" content="421">
+
+<link href="https://docs.microsoft.com/en-us/iis-administration/" rel="canonical">
+	<title>Introduction to the Microsoft IIS Administration API | Microsoft Docs</title>
+
+	<link rel="stylesheet" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/7c40ce1aa389becd6531.site.css">
+	<link rel="stylesheet" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/7c40ce1aa389becd6531.conceptual.css">
+
+	<script async="" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/analytics.js.Без названия"></script><script>
+	var msDocs = {
+		data:{
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pathToTheme: '/_themes/docs.theme/master/en-us/_themes/',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			hasComments: true,
+			feedbackSystem: 'LiveFyre',
+			feedbackGitHubRepo: '',
+			feedbackGitHubRepoIsPrivate: false,
+			feedbackProductUrl: '',
+			forceVersionPicker:false		},
+		functions:{},
+		settings:{
+			extendBreadcrumb: false
+		}
+	};
+	if (!('Promise' in window && 'resolve' in window.Promise && 'reject' in window.Promise && 'all' in window.Promise && 'race' in window.Promise)) {
+		document.write('<script src="/_themes/docs.theme/master/en-us/_themes/global/js/bluebird.min.js"><\/script>');
+	}
+	if (typeof fetch !== 'function') {
+		document.write('<script src="/_themes/docs.theme/master/en-us/_themes/global/js/fetch.min.js"><\/script>');
+	}
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+		<script src="/_themes/docs.theme/master/en-us/_themes/global/js/polyfills/all.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+		<script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/jquery-2.2.4.min.js.Без названия"></script>
+	<!--<![endif]-->
+	<script>window.jQuery || document.write('<script src="/_themes/docs.theme/master/en-us/_themes/global/js/jquery/jquery-1.12.4.min.js"><\/script>')</script>
+	<script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/global.min.js.Без названия"></script><style></style><script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/jsll-4.2.4.js.Без названия" async="" defer=""></script>
+<link rel="stylesheet" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/9c-3df1cf"><script type="text/javascript" charset="utf-8" async="" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/2.7c40ce1aa389becd6531.2.js.Без названия"></script><link href="chrome-extension://pflmllfnnabikmfkkaddkoolinlfninn/style.css" type="text/css" rel="stylesheet"><link type="text/css" rel="stylesheet" charset="UTF-8" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/translateelement.css"><script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/8c-9ddf90" defer=""></script><script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/meversion" defer=""></script><meta name="rating.locale" content="en-us"><script async="" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/t.js.Без названия"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="/_chrome/commenting/master/open-commenting.ui.v1.0.2-7-g1b78816.master.min.js" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/open-commenting.ui.v1.0.2-7-g1b78816.master.min.js.Без названия"></script><style type="text/css">.or-o, .or-so {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+    position: relative;
+    float: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+    box-sizing: border-box;
+    font: 13px 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: normal;
+    text-transform: none;
+    border-spacing: 0;
+    border-collapse: collapse;
+    transform: none;
+    transition: none;
+    animation: none;
+}
+.or-o:before, .or-o:after, .or-so:before, .or-so:after {
+    content: none;
+}
+.or-e-0 {
+    transition: none !important;
+}
+.or-f {
+    padding: 1px;
+}
+.or-f::-moz-focus-inner {
+    border: none;
+    padding: 0;
+}
+.or-lw {
+    clear: both;
+}
+h1, h2 {}
+h1.or-t, h2.or-t {
+    font-weight: lighter;
+}
+h1.or-t {
+    font-size: 40px;
+}
+h2.or-t {
+    font-size: 30px;
+}
+h3.or-t {
+    font-size: 20px;
+}
+h4.or-t {
+    font-size: 17px;
+}
+.or-b {
+    cursor: pointer;
+}
+.or-b>.or-c {
+    display: inline-block;
+    padding: 4px 25px;
+    width: 100%;
+    height: 100%;
+}
+.or-b:active {
+    transform: scale(0.98, 0.95);
+}
+.or-b[disabled] {
+    cursor: default;
+}
+.or-b[disabled]:active {
+    transform: none;
+}
+.or-g {
+    display: inline-block;
+    line-height: 0;
+}
+.or-l {
+    cursor: pointer;
+    padding: 5px 1px;
+    vertical-align: baseline;
+}
+.or-l>.or-c {
+    text-decoration: underline;
+}
+.or-a {
+    cursor: pointer;
+}
+.or-a>.or-c {
+    display: inline-block;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+}
+.or-v {
+    cursor: pointer;
+    padding-bottom: 2px;
+    /* For IE :active propagation BUG Fix */
+}
+.or-v>span {
+    display: inline-block;
+}
+.or-v>input[type=checkbox] {
+    -moz-appearance: checkbox-container;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+.or-v>input[type=checkbox]+span, .or-v>input[type=checkbox]+span+span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+.or-v>input[type=checkbox]+span+span {
+    opacity: 0;
+}
+.or-v>input[type=checkbox]:checked+span+span {
+    opacity: 1;
+}
+.or-v>span:last-child {
+    margin: 0 0 0 25px;
+    line-height: 19px;
+}
+.or-v:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+}
+.or-pc[dir=rtl] .or-v>span:last-child {
+    margin: 0 25px 0 0;
+}
+.or-x {
+    resize: none;
+    padding: 5px;
+}
+.or-c-mf {
+    padding: 10px;
+}
+.or-c-mf.or-e-fi {
+    transition: opacity 0.1s linear;
+}
+.or-c-mf.or-e-fo {
+    transition: opacity 0.75s linear;
+}
+.or-c-pf {
+    padding: 7px;
+    max-height: 100%;
+    overflow: auto;
+}
+.or-c-pf>.or-a {
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 0;
+    width: 20px;
+    height: 20px;
+}
+.or-c-pf>.or-a.or-f.or-k {
+    outline: none;
+}
+.or-c-pf>.or-a>.or-c.or-g {
+    padding: 0;
+}
+.or-c-pf>.or-a>.or-c.or-g>svg {
+    stroke-width: 1px;
+}
+.or-c-pf.or-e-fi, .or-c-pf.or-e-fo {
+    transition: opacity 0.1s linear;
+}
+.or-c-pf>.or-lw {
+    overflow: hidden;
+    padding: 3px;
+}
+.or-c-pf>.or-lw.or-e-h.or-e-w.or-e-fi {
+    transition: height 0.167s cubic-bezier(0.1, 0.9, 0.2, 1.0),
+                    width 0.167s cubic-bezier(0.1, 0.9, 0.2, 1.0),
+                    opacity 0.1s linear 0.167s;
+}
+.or-pc[dir=rtl] .or-c-pf>.or-a {
+    left: 0;
+    right: initial;
+}
+.or-c-md {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+}
+.or-c-md>.or-c {
+    overflow: auto;
+}
+.or-c-md>.or-c.or-e-fi.or-e-t {
+    transition: opacity 0.167s linear, transform 0.367s cubic-bezier(0.1, 0.9, 0.2, 1.0);
+}
+.or-c-md>.or-c.or-e-fo.or-e-t {
+    transition: opacity 0.1s linear, transform 0.1s linear;
+}
+.or-c-v h3.or-t {
+    font-size: 13px;
+    margin: 0 18px 5px 1px;
+}
+.or-c-v>table.or-lw {
+    table-layout: fixed;
+}
+.or-c-v>table.or-lw td {
+    width: 50%;
+}
+.or-c-v>table.or-lw td>.or-b {
+    width: 100%;
+}
+.or-c-v>table.or-lw td:first-child {
+    padding-right: 1px;
+}
+.or-c-v>table.or-lw td:last-child {
+    padding-left: 1px;
+}
+.or-pc[dir=rtl] .or-c-v h3.or-t {
+    margin: 0 1px 5px 18px;
+}
+.or-pc[dir=rtl] .or-c-v>table.or-lw td:first-child {
+    border: none;
+    border-left: 2px transparent solid;
+}
+.or-c-f {
+    width: 235px;
+    max-width: 100%;
+}
+.or-c-f h3.or-t {
+    font-size: 13px;
+    font-weight: bold;
+}
+.or-c-f .or-v, .or-c-f .or-x, .or-c-f>.or-b {
+    display: block;
+}
+.or-c-f .or-v {
+    margin: 3px 0 0 0;
+}
+.or-c-f .or-x {
+    width: 100%;
+    height: 75px;
+}
+.or-c-f>.or-lw {
+    margin: 3px 0 0 0;
+}
+.or-c-f>.or-lw>.or-t {
+    margin: 0 18px 0 0;
+}
+.or-c-f>.or-lw.or-e-h.or-e-w.or-e-fi {
+    transition: height 0.167s cubic-bezier(0.1, 0.9, 0.2, 1.0),
+                    width 0.167s cubic-bezier(0.1, 0.9, 0.2, 1.0),
+                    opacity 0.167s linear;
+}
+.or-c-f>h3.or-t {
+    margin: 7px 0 5px 1px;
+}
+.or-c-f>.or-b {
+    float: right;
+    margin: 4px -1px 0 0;
+}
+.or-pc[dir=rtl] .or-c-f {}
+.or-pc[dir=rtl] .or-c-f>h3.or-t {
+    margin: 7px 1px 5px 0;
+}
+.or-pc[dir=rtl] .or-c-f>.or-lw>.or-t {
+    margin: 0 0 0 18px;
+}
+.or-pc[dir=rtl] .or-c-f>.or-b {
+    float: left;
+    margin: 4px 0 0 -1px;
+}
+.or-c-t h3.or-t {
+    font-size: 13px;
+}
+.or-c-pf .or-c-t h3.or-t {
+    margin: 3px 18px 0 0;
+}
+.or-pc[dir=rtl] .or-c-pf .or-c-t h3.or-t {
+    margin: 3px 0 0 18px;
+}
+.or-c-mv svg {
+    width: 12px;
+    height: 12px;
+    stroke-width: 1px;
+}
+.or-c-mv>.or-c {
+    padding: 3px 20px 5px 17px;
+}
+.or-c-mv>.or-c>span {
+    vertical-align: middle;
+}
+.or-c-mv>.or-c>.or-t {
+    color: inherit;
+    margin-left: 2px;
+}
+.or-c-mv.or-e-fi {
+    transition: opacity 0.1s linear;
+}
+.or-pc[dir=rtl] .or-c-mv>.or-c {
+    padding: 3px 17px 5px 20px;
+}
+.or-pc[dir=rtl] .or-c-mv>.or-c>.or-t {
+    margin: 0 2px 0 0;
+}
+.or-t-ml .or-f {}
+.or-t-ml .or-f.or-k {
+    outline: 2px black solid;
+}
+.or-t-ml .or-t {
+    color: black;
+}
+.or-t-ml .or-b {}
+.or-t-ml .or-b, .or-t-ml .or-b:hover, .or-t-ml .or-b:active {
+    background: none;
+}
+.or-t-ml .or-b>.or-c {
+    color: white;
+    stroke: white;
+    fill: white;
+    background: #0078d7;
+    border: 2px transparent solid;
+}
+.or-t-ml .or-b:hover>.or-c {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+.or-t-ml .or-b:active>.or-c {
+    color: black;
+    stroke: black;
+    fill: black;
+    background: #999999;
+    border-color: transparent;
+}
+.or-t-ml .or-b[disabled]>.or-c, .or-t-ml .or-b[disabled]:hover>.or-c {
+    color: rgba(0, 0, 0, 0.4);
+    stroke: rgba(0, 0, 0, 0.4);
+    fill: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+}
+.or-t-ml .or-l {}
+.or-t-ml .or-l, .or-t-ml .or-l:hover, .or-t-ml .or-l:active {
+    background: none;
+}
+.or-t-ml .or-l>.or-c {
+    color: #0078d7;
+}
+.or-t-ml .or-l:hover>.or-c {
+    color: rgba(0, 0, 0, 0.6);
+}
+.or-t-ml .or-l:active>.or-c {
+    color: rgba(0, 0, 0, 0.4);
+}
+.or-t-ml .or-a {}
+.or-t-ml .or-a, .or-t-ml .or-a:hover, .or-t-ml .or-a:active {
+    background: none;
+}
+.or-t-ml .or-a>.or-c {
+    color: black;
+    background: transparent;
+}
+.or-t-ml .or-a:hover>.or-c {
+    background: rgba(0, 0, 0, 0.1);
+}
+.or-t-ml .or-a:active>.or-c {
+    background: rgba(0, 0, 0, 0.2);
+}
+.or-t-ml .or-v {}
+.or-t-ml .or-v>input[type=checkbox] {}
+.or-t-ml .or-v>input[type=checkbox]+span {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    background: none;
+}
+.or-t-ml .or-v>input[type=checkbox]+span+span>svg {
+    stroke: white;
+    stroke-width: 1.5px;
+    fill: transparent;
+}
+.or-t-ml .or-v:hover>input[type=checkbox]+span, .or-t-ml .or-v:hover>input[type=checkbox]:checked+span {
+    border-color: black;
+}
+.or-t-ml .or-v:active>input[type=checkbox]+span, .or-t-ml .or-v>input[type=checkbox]:checked+span, .or-t-ml .or-v:active>input[type=checkbox]:checked+span {
+    border-color: transparent;
+}
+.or-t-ml .or-v:active>input[type=checkbox]+span, .or-t-ml .or-v:active>input[type=checkbox]:checked+span {
+    background: rgba(0, 0, 0, 0.6);
+}
+.or-t-ml .or-v>input[type=checkbox]:checked+span {
+    background: #0078d7;
+}
+.or-t-ml .or-x {
+    color: black;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px rgba(0, 0, 0, 0.4) solid;
+}
+.or-t-ml .or-x:hover {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: #171717;
+}
+.or-t-ml .or-x:active, .or-t-ml .or-x:focus {
+    color: black;
+    background: white;
+    border-color: #0078d7;
+}
+.or-t-ml .or-x:active::-webkit-input-placeholder, .or-t-ml .or-x:focus::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+.or-t-ml .or-x:active:-ms-input-placeholder, .or-t-ml .or-x:focus:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+.or-t-ml .or-x:active::placeholder, .or-t-ml .or-x:focus::placeholder {
+    color: rgba(0, 0, 0, 0.4);
+}
+.or-t-ml .or-x::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+.or-t-ml .or-x:-ms-input-placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+.or-t-ml .or-x::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+}
+.or-t-ml .or-c-pf, .or-t-ml .or-c-mf {
+    border: 1px rgba(133, 133, 133, 0.4) solid;
+    background: white;
+}
+.or-t-ml .or-c-pf {}
+.or-t-ml .or-c-pf>.or-a {}
+.or-t-ml .or-c-pf>.or-a.or-f.or-k:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px black solid;
+}
+.or-t-ml .or-c-pf>.or-a>.or-c.or-g>svg {
+    stroke: rgba(0, 0, 0, 0.6);
+}
+.or-t-ml .or-c-pf>.or-a:hover>.or-c.or-g>svg {
+    stroke: #c80000;
+}
+.or-t-ml .or-c-pf>.or-a:active>.or-c.or-g>svg {
+    stroke: #8c0000;
+}
+.or-t-ml .or-c-md {
+    background: rgba(255, 255, 255, 0.6);
+}
+.or-t-ml .or-c-md>.or-c {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (-ms-high-contrast: active) {
+    .or-t-ml .or-b, .or-t-md .or-b {}
+    .or-t-ml .or-b>.or-c, .or-t-ml .or-b:active>.or-c, .or-t-md .or-b>.or-c, .or-t-md .or-b:active>.or-c {
+        stroke: white;
+        fill: white;
+    }
+    .or-t-ml .or-c-pf>.or-a>.or-c.or-g>svg, .or-t-md .or-c-pf>.or-a>.or-c.or-g>svg {
+        stroke: white;
+    }
+}
+
+@media screen and (-ms-high-contrast: black-on-white) {
+    .or-t-ml .or-b, .or-t-md .or-b {}
+    .or-t-ml .or-b>.or-c, .or-t-ml .or-b:active>.or-c, .or-t-md .or-b>.or-c, .or-t-md .or-b:active>.or-c {
+        stroke: black;
+        fill: black;
+    }
+    .or-t-ml .or-v>input[type=checkbox]+span+span>svg, .or-t-md .or-v>input[type=checkbox]+span+span>svg {
+        stroke: black;
+    }
+    .or-t-ml .or-c-pf>.or-a>.or-c.or-g>svg, .or-t-md .or-c-pf>.or-a>.or-c.or-g>svg {
+        stroke: black;
+    }
+}
+</style><style type="text/css">[id='openFeedbackContainer']{ position: fixed; right: 10px; bottom: 10px; }
+[id='openFeedbackContainer'][dir='rtl']{ left: 10px; right: initial; }</style><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.livefyre.com/libs/fyre.conv/v3.0.0/livefyre.min.js" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/livefyre.min.js.Без названия"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.livefyre.com/libs/sidenotes/v1.6.1/sidenotes.min.js" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/sidenotes.min.js.Без названия"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.livefyre.com/libs/identity/v1.1.14/simple/javascripts/customprofiles.min.js" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/customprofiles.min.js.Без названия"></script><link rel="stylesheet" type="text/css" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/livefyre_main.css" media="all"><script type="text/javascript" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/livefyre_base.js.Без названия" async="" defer=""></script><script type="text/javascript" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/livefyre_mod_main.js.Без названия" async="" defer=""></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="//cdn.livefyre.com/libs/insights-emitter/v0.0.11/insights-emitter.min.js" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/insights-emitter.min.js.Без названия"></script><link rel="stylesheet" type="text/css" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/sp.css" media="all"><style type="text/css" id="fyre-brand-styles-v2">.fyre-lfep2,
+.fyre-lfep2 input,
+.fyre-lfep2 textarea {
+    font-family: ;
+}
+
+.fyre-cp-form-btns .fyre-cp-form-back-btn,
+.fyre-cp-form-btns .fyre-cp-form-submit-btn {
+    background-color: #e86600;
+}
+
+.fyre-cp-link-create {
+    color: #e86600;
+}
+
+p.fyre-profile-user-comments span,
+p.fyre-profile-user-likes span {
+    color: #e86600;
+}
+
+.fyre-profile-comment-footer a {
+    color: #e86600;
+}
+
+a.fyre-profile-more-link {
+    color: #e86600;
+}
+
+.fyre-cp-form .fyre-cp-edit-save-msg {
+    color: #e86600
+}</style><script type="text/javascript" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/livefyre_mod_editor_main.js.Без названия" async="" defer=""></script><link rel="stylesheet" type="text/css" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/block.css" media="all"></head>
+
+<body lang="en-us" dir="ltr" style="overflow-y: auto;">
+<div class="header-holder">
+		<div id="headerAreaHolder" ms.pgarea="header" data-bi-name="header">    <section id="headerArea" data-m="{&quot;cN&quot;:&quot;headerArea&quot;,&quot;cT&quot;:&quot;Area_coreuiArea&quot;,&quot;id&quot;:&quot;a1Body&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;Body&quot;}">
+                    <div id="headerRegion" data-region-key="headerregion" data-m="{&quot;cN&quot;:&quot;headerRegion&quot;,&quot;cT&quot;:&quot;Region_coreui-region&quot;,&quot;id&quot;:&quot;r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;a1&quot;}">
+
+    <div id="headerUniversalHeader" data-m="{&quot;cN&quot;:&quot;headerUniversalHeader&quot;,&quot;cT&quot;:&quot;Module_coreui-universalheader&quot;,&quot;id&quot;:&quot;m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;r1a1&quot;}" data-module-id="Category|headerRegion|headerRegion|headerUniversalHeader|coreui-universalheader">
+        
+
+
+
+
+
+
+        <a data-m="{&quot;pid&quot;:&quot;h:de2fb0b1&quot;,&quot;id&quot;:&quot;n1m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;m1r1a1&quot;}" class="m-skip-to-main" href="https://docs.microsoft.com/en-us/IIS-Administration/#main" tabindex="0" style="z-index:800" ms.title="Skip to content">Skip to main content</a>
+
+<header role="banner" class="c-uhfh context-uhf js" itemscope="itemscope" data-header-footprint="en-us/MSDocs/MSDocsHeader-DocsL1" itemtype="http://schema.org/Organization">
+    <div class="theme-light js-global-head f-closed " ms.pgarea="Universal Header">
+        <div class="c-uhfh-gcontainer">
+            <button class="c-action-trigger c-glyph glyph-global-nav-button" aria-label="Header navigation menu" aria-expanded="false" ms.title="Mobile menu button"></button>
+            <button class="c-action-trigger c-glyph glyph-arrow-htmllegacy" aria-label="Close search" aria-expanded="false" ms.title="Close Search"></button>
+                    <a data-m="{&quot;pid&quot;:&quot;h:32f2fa12&quot;,&quot;id&quot;:&quot;n2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;m1r1a1&quot;}" id="uhfLogo" class="c-logo" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft" ms.cmpgrp="GlobalNav_Logo">
+                        <img itemprop="logo" itemscope="itemscope" class="c-image" alt="Microsoft" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/microsoft-gray.png">
+                        <span>Microsoft</span>
+                    </a>
+            <div class="f-mobile-title">
+                <button class="c-action-trigger c-glyph glyph-chevron-left" aria-label="See more menu options" ms.title="Mobile back button"></button>
+                <span data-global-title="Microsoft home" class="js-mobile-title">Документы</span>
+                <button class="c-action-trigger c-glyph glyph-chevron-right" aria-label="See more menu options" ms.title="Mobile forward button"></button>
+            </div>
+
+            
+            <button class="c-action-trigger c-glyph glyph-chevron-left js-primary-paddle" ms.title="Previous" aria-label="Show previous" tabindex="-1" style="display: none;"></button>
+            
+                    <nav id="uhf-g-nav" class="c-uhfh-gnav" aria-labelledby="uhfLogo" role="navigation" ms.cmpgrp="nav">
+            <ul class="js-paddle-items"><li style="transition: margin 0.667s cubic-bezier(0.16, 1, 0.29, 0.99);">
+                            <div class="c-uhf-menu js-nav-menu">
+
+                                <button id="Technologies-navigation" aria-expanded="false" aria-haspopup="true" ms.title="Technologies" ms.interactiontype="14" style="white-space:nowrap">Technologies</button>
+                                <ul class="" aria-labelledby="Technologies-navigation" aria-hidden="true" ms.cmpnm="Technologies">
+    <li ms.cmpnm="Technologies_.NET">
+        <a id="shellmenu_1" class="js-subm-uhf-nav-link" href="https://www.dot.net/" ms.title="Technologies_.NET">.NET</a>
+        
+    </li>
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Windows">
+
+        <button id="Windows-navigation" aria-expanded="false" ms.title="Windows" ms.interactiontype="14">Windows</button>
+        <ul aria-labelledby="Windows-navigation" aria-hidden="true">
+    <li ms.cmpnm="Windows_Apps">
+        <a id="shellmenu_3" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/windows" ms.title="Windows_Apps">Apps</a>
+        
+    </li>
+    <li ms.cmpnm="Windows_InternetofThings">
+        <a id="shellmenu_4" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/windows/iot" ms.title="Windows_InternetofThings">Internet of Things</a>
+        
+    </li>
+    <li ms.cmpnm="Windows_Holographic">
+        <a id="shellmenu_5" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/en-us/windows/mixed-reality" ms.title="Windows_Holographic">Mixed Reality</a>
+        
+    </li>
+    <li ms.cmpnm="Windows_MicrosoftEdge">
+        <a id="shellmenu_6" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/microsoft-edge" ms.title="Windows_MicrosoftEdge">Microsoft Edge</a>
+        
+    </li>
+    <li ms.cmpnm="Windows_Hardware ">
+        <a id="shellmenu_7" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/windows/hardware" ms.title="Windows_Hardware ">Hardware </a>
+        
+    </li>
+    <li ms.cmpnm="Windows_WindowsTechCenter">
+        <a id="shellmenu_8" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/windows" ms.title="Windows_WindowsTechCenter">IT Center</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="MicrosoftAzure">
+
+        <button id="MicrosoftAzure-navigation" aria-expanded="false" ms.title="MicrosoftAzure" ms.interactiontype="14">Microsoft Azure </button>
+        <ul aria-labelledby="MicrosoftAzure-navigation" aria-hidden="true">
+    <li ms.cmpnm="MicrosoftAzure_WhatisAzure">
+        <a id="shellmenu_10" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/overview/what-is-azure/" ms.title="MicrosoftAzure_WhatisAzure">What is Azure </a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftAzure_Products">
+        <a id="shellmenu_11" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/services/" ms.title="MicrosoftAzure_Products">Products</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftAzure_Solutions">
+        <a id="shellmenu_12" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/solutions/?v=4" ms.title="MicrosoftAzure_Solutions">Solutions</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftAzure_Pricing">
+        <a id="shellmenu_13" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/pricing/" ms.title="MicrosoftAzure_Pricing">Pricing</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftAzure_CreateaFreeAccount">
+        <a id="shellmenu_14" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/free" ms.title="MicrosoftAzure_CreateaFreeAccount">Create a free account</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="MicrosoftVisualStudio">
+
+        <button id="VisualStudio-navigation" aria-expanded="false" ms.title="MicrosoftVisualStudio" ms.interactiontype="14">Visual Studio </button>
+        <ul aria-labelledby="VisualStudio-navigation" aria-hidden="true">
+    <li ms.cmpnm="MicrosoftVisualStudio_VisualStudio">
+        <a id="shellmenu_16" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/" ms.title="MicrosoftVisualStudio_VisualStudio">Visual Studio</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftVisualStudio_VisualStudioIDE">
+        <a id="shellmenu_17" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/vs/" ms.title="MicrosoftVisualStudio_VisualStudioIDE">Visual Studio IDE</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftVisualStudio_VisualStudioTeamServices">
+        <a id="shellmenu_18" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/team-services/" ms.title="MicrosoftVisualStudio_VisualStudioTeamServices">Visual Studio Team Services</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftVisualStudio_VisualStudioCode">
+        <a id="shellmenu_19" class="js-subm-uhf-nav-link" href="https://code.visualstudio.com/" ms.title="MicrosoftVisualStudio_VisualStudioCode">Visual Studio Code</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftVisualStudio_Xamarin">
+        <a id="shellmenu_20" class="js-subm-uhf-nav-link" href="https://www.xamarin.com/" ms.title="MicrosoftVisualStudio_Xamarin">Xamarin</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftVisualStudio_VisualStudioDevEssentials">
+        <a id="shellmenu_21" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/dev-essentials/" ms.title="MicrosoftVisualStudio_VisualStudioDevEssentials">Visual Studio Dev Essentials</a>
+        
+    </li>
+    <li ms.cmpnm="MicrosoftVisualStudio_Subscriptions">
+        <a id="shellmenu_22" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/subscriptions/" ms.title="MicrosoftVisualStudio_Subscriptions">Subscriptions</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Office">
+
+        <button id="Office-navigation" aria-expanded="false" ms.title="Office" ms.interactiontype="14">Office</button>
+        <ul aria-labelledby="Office-navigation" aria-hidden="true">
+    <li ms.cmpnm="Office_OfficeDevCenter">
+        <a id="shellmenu_24" class="js-subm-uhf-nav-link" href="https://dev.office.com/" ms.title="Office_OfficeDevCenter">Office Dev Center</a>
+        
+    </li>
+    <li ms.cmpnm="Office_Office365forITpros">
+        <a id="shellmenu_25" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/en-us/office/dn788774" ms.title="Office_Office365forITpros">Office 365 for IT pros</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li ms.cmpnm="Microsoft Graph">
+        <a id="shellmenu_26" class="js-subm-uhf-nav-link" href="https://graph.microsoft.io/en-us/docs" ms.title="Microsoft Graph">Microsoft Graph</a>
+        
+    </li>
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Services ">
+
+        <button id="Services-navigation" aria-expanded="false" ms.title="Services " ms.interactiontype="14">Services </button>
+        <ul aria-labelledby="Services-navigation" aria-hidden="true">
+    <li ms.cmpnm="Services_OfficeDevCenter">
+        <a id="shellmenu_28" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/store" ms.title="Services_OfficeDevCenter">Store</a>
+        
+    </li>
+    <li ms.cmpnm="Services_Cortana">
+        <a id="shellmenu_29" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/cortana" ms.title="Services_Cortana">Cortana</a>
+        
+    </li>
+    <li ms.cmpnm="Services_Bing">
+        <a id="shellmenu_30" class="js-subm-uhf-nav-link" href="https://bing.com/dev/dev-center" ms.title="Services_Bing">Bing</a>
+        
+    </li>
+    <li ms.cmpnm="Services_ApplicationInsights">
+        <a id="shellmenu_31" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/services/application-insights" ms.title="Services_ApplicationInsights">Application Insights</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+                                    
+                                    
+                                </ul>
+                            </div>
+                        </li><li>
+                            <div class="c-uhf-menu js-nav-menu">
+
+                                <button id="Documentation-navigation" aria-expanded="false" aria-haspopup="true" ms.title="Documentation" ms.interactiontype="14" style="white-space:nowrap">Documentation</button>
+                                <ul class="" aria-labelledby="Documentation-navigation" aria-hidden="true" ms.cmpnm="Documentation">
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Build_DeveloperCenters">
+
+        <button id="Platforms-navigation" aria-expanded="false" ms.title="Build_DeveloperCenters" ms.interactiontype="14">Platforms</button>
+        <ul aria-labelledby="Platforms-navigation" aria-hidden="true">
+    <li ms.cmpnm="Documentation_Platforms_.NET">
+        <a id="shellmenu_34" class="js-subm-uhf-nav-link" href="https://www.dot.net/" ms.title="Documentation_Platforms_.NET">.NET</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_MicrosoftAzure">
+        <a id="shellmenu_35" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/en-us/documentation/" ms.title="Build_DeveloperCenters_MicrosoftAzure">Microsoft Azure</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_MicrosoftGraph">
+        <a id="shellmenu_36" class="js-subm-uhf-nav-link" href="https://graph.microsoft.io/en-us/docs" ms.title="Build_DeveloperCenters_MicrosoftGraph">Microsoft Graph</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_VisualStudio">
+        <a id="shellmenu_37" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/vs/getting-started/" ms.title="Build_DeveloperCenters_VisualStudio">Visual Studio</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_VisualStudioTeamServices">
+        <a id="shellmenu_38" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/vsts/index" ms.title="Build_DeveloperCenters_VisualStudioTeamServices">Visual Studio Team Services</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_Windows">
+        <a id="shellmenu_39" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/en-us/windows" ms.title="Build_DeveloperCenters_Windows">Windows</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_Office">
+        <a id="shellmenu_40" class="js-subm-uhf-nav-link" href="https://dev.office.com/docs" ms.title="Build_DeveloperCenters_Office">Office</a>
+        
+    </li>
+    <li ms.cmpnm="Build_DeveloperCenters_AllDeveloperCenters">
+        <a id="shellmenu_41" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/en-us/" ms.title="Build_DeveloperCenters_AllDeveloperCenters">All Developer Centers</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li ms.cmpnm="Learn_TechNet">
+        <a id="shellmenu_42" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/" ms.title="Learn_TechNet">TechNet</a>
+        
+    </li>
+    <li ms.cmpnm="Learn_MicrosoftDeveloperNetwork">
+        <a id="shellmenu_43" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/" ms.title="Learn_MicrosoftDeveloperNetwork">Microsoft Developer Network</a>
+        
+    </li>
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Build_TechCenters">
+
+        <button id="ITTechCenters-navigation" aria-expanded="false" ms.title="Build_TechCenters" ms.interactiontype="14">IT TechCenters</button>
+        <ul aria-labelledby="ITTechCenters-navigation" aria-hidden="true">
+    <li ms.cmpnm="TechCenter_WindowsTechCenter">
+        <a id="shellmenu_45" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/windows" ms.title="TechCenter_WindowsTechCenter">Windows IT Center</a>
+        
+    </li>
+    <li ms.cmpnm="TechCenter_Office365forITpros">
+        <a id="shellmenu_46" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/en-us/office/dn788774" ms.title="TechCenter_Office365forITpros">Office 365 for IT Pros</a>
+        
+    </li>
+    <li ms.cmpnm="TechCenter_AllTechcenters">
+        <a id="shellmenu_47" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/en-us/bb421517.aspx?wt.svl=more_centers_link" ms.title="TechCenter_AllTechcenters">All IT TechCenters</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Build_Downloads">
+
+        <button id="Downloads-navigation" aria-expanded="false" ms.title="Build_Downloads" ms.interactiontype="14">Downloads</button>
+        <ul aria-labelledby="Downloads-navigation" aria-hidden="true">
+    <li ms.cmpnm="Build_Downloads_MicrosoftDownloadCenter">
+        <a id="shellmenu_49" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/download/developer-tools.aspx" ms.title="Build_Downloads_MicrosoftDownloadCenter">Microsoft Download Center</a>
+        
+    </li>
+    <li ms.cmpnm="Build_Downloads_Microsoft Azure">
+        <a id="shellmenu_50" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/en-us/downloads/" ms.title="Build_Downloads_Microsoft Azure">Microsoft Azure</a>
+        
+    </li>
+    <li ms.cmpnm="Build_Downloads_VisualStudio">
+        <a id="shellmenu_51" class="js-subm-uhf-nav-link" href="https://www.visualstudio.com/downloads/" ms.title="Build_Downloads_VisualStudio">Visual Studio</a>
+        
+    </li>
+    <li ms.cmpnm="Build_Downloads_SDKS">
+        <a id="shellmenu_52" class="js-subm-uhf-nav-link" href="https://msdn.microsoft.com/en-us/microsoft-sdks-msdn" ms.title="Build_Downloads_SDKS">SDKs</a>
+        
+    </li>
+    <li ms.cmpnm="Build_Downloads_Windows">
+        <a id="shellmenu_53" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/en-us/windows/downloads" ms.title="Build_Downloads_Windows">Windows</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Build_Samples">
+
+        <button id="Codesamples-navigation" aria-expanded="false" ms.title="Build_Samples" ms.interactiontype="14">Code samples</button>
+        <ul aria-labelledby="Codesamples-navigation" aria-hidden="true">
+    <li ms.cmpnm="CodeSamples_Office">
+        <a id="shellmenu_55" class="js-subm-uhf-nav-link" href="https://dev.office.com/code-samples" ms.title="CodeSamples_Office">Office</a>
+        
+    </li>
+    <li ms.cmpnm="CodeSamples_MicrosoftGraph">
+        <a id="shellmenu_56" class="js-subm-uhf-nav-link" href="https://graph.microsoft.io/en-us/code-samples-and-sdks" ms.title="CodeSamples_MicrosoftGraph">Microsoft Graph</a>
+        
+    </li>
+    <li ms.cmpnm="CodeSamples_MSDN">
+        <a id="shellmenu_57" class="js-subm-uhf-nav-link" href="https://code.msdn.microsoft.com/" ms.title="CodeSamples_MSDN">MSDN</a>
+        
+    </li>
+    <li ms.cmpnm="CodeSamples_Azure">
+        <a id="shellmenu_58" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/en-us/resources/samples/" ms.title="CodeSamples_Azure">Azure</a>
+        
+    </li>
+    <li ms.cmpnm="CodeSamples_Windows">
+        <a id="shellmenu_59" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/en-us/windows/samples" ms.title="CodeSamples_Windows">Windows</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li ms.cmpnm="documentation_powershell_scripts">
+        <a id="shellmenu_60" class="js-subm-uhf-nav-link" href="https://technet.microsoft.com/scriptcenter" ms.title="documentation_powershell_scripts">PowerShell scripts</a>
+        
+    </li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                        </li><li>
+                            <div class="c-uhf-menu js-nav-menu">
+
+                                <button id="Resources-navigation" aria-expanded="false" aria-haspopup="true" ms.title="Resources " ms.interactiontype="14" style="white-space:nowrap">Resources</button>
+                                <ul class="" aria-labelledby="Resources-navigation" aria-hidden="true" ms.cmpnm="Resources ">
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Connect_Blogs">
+
+        <button id="Blogs-navigation" aria-expanded="false" ms.title="Connect_Blogs" ms.interactiontype="14">Blogs</button>
+        <ul aria-labelledby="Blogs-navigation" aria-hidden="true">
+    <li ms.cmpnm="Connect_Blogs_MicrosoftAzure">
+        <a id="shellmenu_63" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/en-us/blog/" ms.title="Connect_Blogs_MicrosoftAzure">Microsoft Azure</a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Blogs_VisualStudio">
+        <a id="shellmenu_64" class="js-subm-uhf-nav-link" href="https://blogs.msdn.microsoft.com/visualstudio/" ms.title="Connect_Blogs_VisualStudio">Visual Studio</a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Blogs_VisualStudioTeamServices">
+        <a id="shellmenu_65" class="js-subm-uhf-nav-link" href="https://blogs.msdn.microsoft.com/visualstudioalm/" ms.title="Connect_Blogs_VisualStudioTeamServices">Visual Studio Team Services </a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Blogs_DevloperTools">
+        <a id="shellmenu_66" class="js-subm-uhf-nav-link" href="https://blogs.msdn.microsoft.com/developer-tools/" ms.title="Connect_Blogs_DevloperTools">Developer tools</a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Blogs_OfficeDevBlog">
+        <a id="shellmenu_67" class="js-subm-uhf-nav-link" href="https://dev.office.com/blogs" ms.title="Connect_Blogs_OfficeDevBlog">Office Dev Blog</a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Blogs_ServerandManagement">
+        <a id="shellmenu_68" class="js-subm-uhf-nav-link" href="https://blogs.technet.microsoft.com/server-management/" ms.title="Connect_Blogs_ServerandManagement">Server &amp; management</a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Blogs_Windows">
+        <a id="shellmenu_69" class="js-subm-uhf-nav-link" href="https://blogs.windows.com/buildingapps/" ms.title="Connect_Blogs_Windows">Windows</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Resources_CommunityandForums">
+
+        <button id="Community&amp;Forums-navigation" aria-expanded="false" ms.title="Resources_CommunityandForums" ms.interactiontype="14">Community &amp; Forums</button>
+        <ul aria-labelledby="Community&amp;Forums-navigation" aria-hidden="true">
+    <li ms.cmpnm="CommunityandForums_Developers">
+        <a id="shellmenu_71" class="js-subm-uhf-nav-link" href="https://social.msdn.microsoft.com/Forums/en-US/home" ms.title="CommunityandForums_Developers">Developers</a>
+        
+    </li>
+    <li ms.cmpnm="CommunityandForums_Technet">
+        <a id="shellmenu_72" class="js-subm-uhf-nav-link" href="https://social.technet.microsoft.com/Forums/en-US/home" ms.title="CommunityandForums_Technet">TechNet</a>
+        
+    </li>
+    <li ms.cmpnm="CommunityandForums_MicrosoftTechCommunity">
+        <a id="shellmenu_73" class="js-subm-uhf-nav-link" href="https://techcommunity.microsoft.com/" ms.title="CommunityandForums_MicrosoftTechCommunity">Microsoft Tech Community</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Connect_CommunityandForums">
+
+        <button id="Subscriptions-navigation" aria-expanded="false" ms.title="Connect_CommunityandForums" ms.interactiontype="14">Subscriptions</button>
+        <ul aria-labelledby="Subscriptions-navigation" aria-hidden="true">
+    <li ms.cmpnm="Subscriptions_VisualStudioMSDNSubscriptions">
+        <a id="shellmenu_75" class="js-subm-uhf-nav-link" href="https://my.visualstudio.com/Benefits?wt.mc_id=o~msft~UHF&amp;campaign=o~msft~UHF" ms.title="Subscriptions_VisualStudioMSDNSubscriptions">Visual Studio (MSDN) subscriptions</a>
+        
+    </li>
+    <li ms.cmpnm="Subscriptions_ITProCloudEssentials">
+        <a id="shellmenu_76" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/cloudessentials" ms.title="Subscriptions_ITProCloudEssentials">Microsoft Cloud Essentials</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li class="f-sub-menu js-nav-menu" ms.cmpnm="Resources_Training">
+
+        <button id="Training-navigation" aria-expanded="false" ms.title="Resources_Training" ms.interactiontype="14">Training</button>
+        <ul aria-labelledby="Training-navigation" aria-hidden="true">
+    <li ms.cmpnm="Training_MicrosoftVirtualAcademy">
+        <a id="shellmenu_78" class="js-subm-uhf-nav-link" href="https://mva.microsoft.com/" ms.title="Training_MicrosoftVirtualAcademy">Microsoft Virtual Academy </a>
+        
+    </li>
+    <li ms.cmpnm="Training_ITProCareerCenter">
+        <a id="shellmenu_79" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/itprocareercenter" ms.title="Training_ITProCareerCenter">IT Pro Career Center</a>
+        
+    </li>
+        </ul>
+        
+    </li>   
+    <li ms.cmpnm="Resources_MicrosoftEvaluationCenter">
+        <a id="shellmenu_80" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/evalcenter/" ms.title="Resources_MicrosoftEvaluationCenter">Microsoft Evaluation Center</a>
+        
+    </li>
+    <li ms.cmpnm="Connect_Channel9">
+        <a id="shellmenu_81" class="js-subm-uhf-nav-link" href="https://channel9.msdn.com/" ms.title="Connect_Channel9">Channel 9</a>
+        
+    </li>
+                                    
+                                    
+                                </ul>
+                            </div>
+                        </li>            </ul>
+            
+        </nav>
+
+            
+            <button class="c-action-trigger c-glyph glyph-chevron-right js-secondary-paddle" ms.title="Next" aria-label="Show next" tabindex="-1" style="display: none;"></button>
+
+                <div class="c-uhfh-actions" ms.cmpgrp="Header actions">
+                            <form class="c-search" autocomplete="off" id="searchForm" name="searchForm" role="search" action="https://docs.microsoft.com/en-us/search/index" method="GET" data-seautosuggest="{&quot;queryParams&quot;:{&quot;market&quot;:&quot;en-us&quot;,&quot;clientId&quot;:&quot;7F27B536-CF6B-4C65-8638-A0F8CBDFCA65&quot;,&quot;sources&quot;:&quot;Microsoft-Terms,Iris-Products,DCatAll-Products&quot;,&quot;counts&quot;:&quot;5,1,5&quot;},&quot;familyNames&quot;:{&quot;Apps&quot;:&quot;App&quot;,&quot;Books&quot;:&quot;Book&quot;,&quot;Bundles&quot;:&quot;Bundle&quot;,&quot;Devices&quot;:&quot;Device&quot;,&quot;Fees&quot;:&quot;Fee&quot;,&quot;Games&quot;:&quot;Game&quot;,&quot;MusicAlbums&quot;:&quot;Album&quot;,&quot;MusicTracks&quot;:&quot;Song&quot;,&quot;MusicVideos&quot;:&quot;Video&quot;,&quot;MusicArtists&quot;:&quot;Artist&quot;,&quot;OperatingSystem&quot;:&quot;Operating System&quot;,&quot;Software&quot;:&quot;Software&quot;,&quot;Movies&quot;:&quot;Movie&quot;,&quot;TV&quot;:&quot;TV&quot;,&quot;CSV&quot;:&quot;Gift Card&quot;,&quot;VideoActor&quot;:&quot;Actor&quot;}}" data-seautosuggestapi="https://www.microsoft.com/services/api/v3/suggest" aria-expanded="false">
+            <input data-m="{&quot;cN&quot;:&quot;cli_shellHeaderSearchInput&quot;,&quot;pid&quot;:&quot;search&quot;,&quot;id&quot;:&quot;nn3m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;m1r1a1&quot;}" id="cli_shellHeaderSearchInput" aria-label="Search" role="combobox" aria-autocomplete="list" aria-controls="universal-header-search-auto-suggest-transparent" aria-owns="universal-header-search-auto-suggest-ul" type="search" name="search" placeholder="Search" ms.title="SearchBox"><div class="x-screen-reader" aria-live="assertive"></div>
+            <button id="search" aria-label="Search" class="c-glyph" ms.title="Search" data-bi-dnt="true"></button>
+            <div class="m-auto-suggest" id="universal-header-search-auto-suggest-transparent" role="group">
+                <ul class="c-menu" id="universal-header-search-auto-suggest-ul" aria-hidden="true" data-bi-dnt="true" data-js-auto-suggest-position="default" role="listbox" data-tel="wedcs" ms.cmpgrp="search suggestions"></ul>
+                <ul class="c-menu f-auto-suggest-no-results" aria-hidden="true" data-js-auto-suggest-postion="default" data-js-auto-suggest-position="default" tabindex="0">
+                    <li class="c-menu-item"> <span tabindex="-1">No results</span></li>
+                </ul>
+            </div>
+            
+        </form>
+
+                    
+                    
+                    
+                    
+                </div>
+        </div>
+        
+        
+    </div>
+            <div class="theme-dark brand-neutral js-cat-head" itemprop="brand" itemscope="itemscope" itemtype="http://schema.org/Brand" ms.cmpgrp="UHF category nav">
+
+<div>
+        <a id="uhfCatLogo" class="c-logo" href="https://docs.microsoft.com/" aria-label="Docs" itemprop="url" ms.title="Docs">
+                <span>Docs</span>
+        </a>
+    
+    <button class="c-action-trigger c-glyph glyph-chevron-left js-primary-paddle" aria-label="Scroll left" title="Scroll left" ms.title="Previous" tabindex="-1" style="display: none;"></button>
+    
+    <button class="c-action-trigger c-glyph glyph-chevron-right js-secondary-paddle" aria-label="Scroll right" title="Scroll right" ms.title="Next" tabindex="-1" style="display: none;"></button>
+            <nav id="uhf-c-nav" role="navigation" aria-labelledby="uhfCatLogo" class="js-paddle-items">
+<a id="mobileHomeLink" class="c-uhf-nav-link x-uhf-zero-width" href="https://docs.microsoft.com/" ms.title="" style="transition: margin 0.667s cubic-bezier(0.16, 1, 0.29, 0.99);">https://docs.microsoft.com</a>
+
+<a id="shellmenu_82" class="c-uhf-nav-link" href="https://docs.microsoft.com/windows" ms.title="docsWindows">Windows</a><a id="shellmenu_83" class="c-uhf-nav-link" href="https://docs.microsoft.com/azure/" ms.title="docsAzure">Microsoft Azure</a><a id="shellmenu_84" class="c-uhf-nav-link" href="https://docs.microsoft.com/visualstudio/products" ms.title="docsVisualStudio">Visual Studio</a><a id="shellmenu_85" class="c-uhf-nav-link" href="https://dev.office.com/" ms.title="docsOffice">Office</a><div class="c-uhf-menu js-nav-menu">
+                    <button id="shellmenu_86" aria-expanded="false" aria-haspopup="true" ms.title="docsMore">More</button>
+                    <ul class="" aria-labelledby="shellmenu_86" aria-hidden="true" ms.cmpnm="docsMore">
+    <li ms.cmpnm="docsNET">
+        <a id="shellmenu_87" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/dotnet/" ms.title="docsNET">.NET</a>
+        
+    </li>
+    <li ms.cmpnm="docsASPNET">
+        <a id="shellmenu_88" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/aspnet/" ms.title="docsASPNET">ASP.NET</a>
+        
+    </li>
+    <li ms.cmpnm="docsCpp">
+        <a id="shellmenu_89" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/cpp/" ms.title="docsCpp">C++</a>
+        
+    </li>
+    <li ms.cmpnm="docsDynamics">
+        <a id="shellmenu_90" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/dynamics365/" ms.title="docsDynamics">Dynamics 365</a>
+        
+    </li>
+    <li ms.cmpnm="docsEducation">
+        <a id="shellmenu_91" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/education/" ms.title="docsEducation">Education</a>
+        
+    </li>
+    <li ms.cmpnm="docsEM">
+        <a id="shellmenu_92" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/enterprise-mobility-security/" ms.title="docsEM">Enterprise Mobility + Security</a>
+        
+    </li>
+    <li ms.cmpnm="docsHealthVault">
+        <a id="shellmenu_93" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/healthvault/" ms.title="docsHealthVault">HealthVault</a>
+        
+    </li>
+    <li ms.cmpnm="docsIntune">
+        <a id="shellmenu_94" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/intune/" ms.title="docsIntune">Intune</a>
+        
+    </li>
+    <li ms.cmpnm="docsNuget">
+        <a id="shellmenu_95" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/nuget/" ms.title="docsNuget">NuGet</a>
+        
+    </li>
+    <li ms.cmpnm="docsPowerShell">
+        <a id="shellmenu_96" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/powershell/" ms.title="docsPowerShell">PowerShell</a>
+        
+    </li>
+    <li ms.cmpnm="docsSCCM">
+        <a id="shellmenu_97" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/sccm/" ms.title="docsSCCM">System Center Configuration Manager</a>
+        
+    </li>
+    <li ms.cmpnm="docsSql">
+        <a id="shellmenu_98" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/sql/" ms.title="docsSql">SQL Server</a>
+        
+    </li>
+    <li ms.cmpnm="docsSystemCenter">
+        <a id="shellmenu_99" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/system-center/" ms.title="docsSystemCenter">System Center</a>
+        
+    </li>
+    <li ms.cmpnm="docsXamarin">
+        <a id="shellmenu_100" class="js-subm-uhf-nav-link" href="https://developer.xamarin.com/" ms.title="docsXamarin">Xamarin</a>
+        
+    </li>
+                        
+                    </ul>
+                </div>                    </nav>
+
+</div>
+
+
+            
+        </div>
+
+    
+</header>
+
+
+    </div>
+            </div>
+
+    </section>
+</div>
+	<div id="disclaimer-holder" class="disclaimer-holder"></div>
+</div>
+
+	<div class="container mainContainer x-hidden-focus" ms.pgarea="body" data-bi-name="body">
+		<div class="primary-holder">
+
+			<main id="main" role="main" class="content" ms.cmpgrp="content" data-bi-name="content" lang="en-us" dir="ltr">
+
+
+				<h1 id="introduction-to-the-microsoft-iis-administration-api" sourcefile="index.md" sourcestartlinenumber="5" sourceendlinenumber="5">Introduction to the Microsoft IIS Administration API</h1>
+
+					<ul class="metadata page-metadata lf-text-block lf-block" ms.cmpgrp="page info" data-bi-name="page info" data-lf-anchor-id="d98c10eca81804c36d35db21e086100c:0">
+							<li class="displayDate docon-before docon-calendar inline">
+								<time datetime="2017-07-05T21:00:00.000Z">07/06/2017</time>
+							</li>
+							<li class="readingTime docon-before docon-clock inline">2 minutes to read</li>
+							<li class="contributors-holder inline">
+								<span class="contributors-text">Contributors</span>
+								<ul class="contributors" ms.cmpgrp="contributors" data-bi-name="contributors">
+											<li><a href="https://github.com/shirhatti" title="Sourabh Shirhatti" ms.cmpnm="contributorprofile" data-bi-name="contributorprofile"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/shirhatti.png" data-src="https://github.com/shirhatti.png?size=32" alt="Sourabh Shirhatti"></a></li>
+											<li><a href="https://github.com/jimmyca15" title="Jimmy Campbell" ms.cmpnm="contributorprofile" data-bi-name="contributorprofile"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/jimmyca15.png" data-src="https://github.com/jimmyca15.png?size=32" alt="Jimmy Campbell"></a></li>
+								</ul>
+							</li>
+
+					<span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="d98c10eca81804c36d35db21e086100c:0">+
+</a>
+</span></ul>
+						<nav id="center-doc-outline" class="doc-outline" ms.cmpgrp="intopic toc" data-bi-name="intopic toc" role="navigation" aria-label="On page navigation" hidden="">
+							<h3>In this article</h3>
+						</nav>
+
+				<!-- <content> -->
+					<div>
+<p class="lf-text-block lf-block" data-lf-anchor-id="c7c9a52fc3156653353ed24cd5a1e9ae:0">The Microsoft IIS Administration API is a REST API that enables consumers to configure and monitor their IIS web servers. With the API installed on an IIS machine, one can configure an IIS instance with any HTTP client including the web management tool at <a href="https://manage.iis.net/" data-linktype="external">https://manage.iis.net</a>. <span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="c7c9a52fc3156653353ed24cd5a1e9ae:0">+
+</a>
+</span></p>
+<h3 id="why-use-iis-administration">Why Use IIS Administration?</h3>
+<p class="lf-text-block lf-block" data-lf-anchor-id="63fc25b3c31d467ba556e0489123282a:0">There are many methods available to configure IIS including appcmd.exe, PowerShell, and .NET. These methods have their benefits, but one thing they lack is an open and standard interface. The IIS Administration API builds upon the principles of REST APIs to provide an interface that can be consumed regardless of platform. This is the ultimate way to open up IIS to any client. There are few frameworks today that don't provide HTTP support, and most frameworks provide methods to simplify communicating with REST APIs. Powerful scripts can be made from a myriad of clients such as PowerShell, cURL, and Python just by performing HTTP requests with JSON payloads.<span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="63fc25b3c31d467ba556e0489123282a:0">+
+</a>
+</span></p>
+<p class="lf-text-block lf-block" data-lf-anchor-id="35a684744b18677f255fc22a9710a80b:0">IIS Administration is the perfect option for remote management. The API is a micro service that runs on the target machine, so by nature it is meant to serve remote requests. Opening up the port that the service listens on is the only step necessary to make remote management available for the machine. This means, web site creation, application pool monitoring, and security configuration can be handled from one client for a cluster of machines with little overhead.<span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="35a684744b18677f255fc22a9710a80b:0">+
+</a>
+</span></p>
+<p class="lf-text-block lf-block" data-lf-anchor-id="95d8023edbbbc5d601778220bc726d5e:0">The IIS Administration service is being developed to completely open up IIS. There are constantly features being worked on and added. We are able to release updates quickly because the Administration Service is a separate download from the IIS service. This also has means that customers can depend on whichever version of the API that they choose.<span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="95d8023edbbbc5d601778220bc726d5e:0">+
+</a>
+</span></p>
+<p class="lf-text-block lf-block" data-lf-anchor-id="eb715636c333406f15f7464d0a2028af:0">Security is a top priority. Our service can use any form of authentication and authorization that IIS uses. This means client certificate authentication, basic authentication, and even Windows authentication. Every call made to the API requires an access token in the request header and the service is not available from outside of the machine unless the port that it listens on is opened. The built-in security allows users to confidently install the IIS Administration API on their machines without worrying that they are compromising their system.<span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="eb715636c333406f15f7464d0a2028af:0">+
+</a>
+</span></p>
+<h3 id="so-many-options">So Many Options</h3>
+<p class="lf-text-block lf-block" data-lf-anchor-id="8044818a5800c22eac9684909620aaac:0"> A REST API is accessible from anywhere. <span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="8044818a5800c22eac9684909620aaac:0">+
+</a>
+</span></p>
+<ul class="lf-text-block lf-block" data-lf-anchor-id="9f3121de0c2a868e19c041641446a80a:0">
+<li>PowerShell</li>
+<li>.NET</li>
+<li>Java</li>
+<li>Python</li>
+<li>Javascript</li>
+<li>Native mobile applications (Android, iOS, Windows)</li>
+<li>Browser applications</li>
+<span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="9f3121de0c2a868e19c041641446a80a:0">+
+</a>
+</span></ul>
+<p class="lf-text-block lf-block" data-lf-anchor-id="c169b52ad37bd4539d77ec4c91c128a0:0">A great example of what the IIS Administration API enables is the web UI that we have developed at <a href="https://manage.iis.net/" data-linktype="external">manage.iis.net</a><span class="lf-thread-btn"><a class="fycon-action-view" tabindex="0" aria-label="Write a Sidenote" data-lf-anchor-id="c169b52ad37bd4539d77ec4c91c128a0:0">+
+</a>
+</span></p>
+</div>
+				<!-- </content> -->
+
+
+			</main>
+
+
+					<div id="comments-container" ms.cmpgrp="comments" data-bi-name="comments" role="form"><div class="fyre fyre-width-large"><div class="fyre-widget "><div class="fyre-featured-content-wrapper" style="display: none"></div><div class="fyre-stream-stats"><div class="fyre-comment-count"><span>3 comments</span></div><div class="fyre-help"><div class="fyre-box-wrapper"><a class="fyre-logo-link" href="http://livefyre.com/" target="_blank"><img class="fyre-logo-drop" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/down_arrow.png" alt="Down arrow"><img class="fyre-logo-help" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Livefyre"></a><ul class="fyre-box-list"><li><a href="http://livefyre.com/" target="_blank" title="Get Livefyre">Get Livefyre</a></li><li><a href="https://livefyre.zendesk.com/hc/en-us" target="_blank" title="FAQ">FAQ</a></li></ul></div></div></div><div class="fyre-auth"><div class="fyre-login-bar"><a rel="nofollow" class="fyre-user-loggedout" aria-label="Sign in" role="button" tabindex="0">Sign in</a></div><div class="fyre-live-container"><div class="fyre-livecount"><em class="fyre-stream-livecount">5 people listening</em></div><div class="fyre-listener-avatars"><a href="https://docs.microsoft.com/en-us/IIS-Administration/" title="Martin_Schvartzman" aria-label="Martin_Schvartzman profile" data-id="58a210ac80e9af69d7a33d22@microsoft.fyre.co" class="fyre-follower fyre-follower-58a210ac80e9af69d7a33d22-microsoft-fyre-co"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50.jpg" alt="Martin_Schvartzman avatar" onerror="javascript:this.src=&#39;https:\/\/dpstvy7p9whsy.cloudfront.net\/a\/anon\/50hc.png&#39;;"></a><a href="https://docs.microsoft.com/en-us/IIS-Administration/" title="haowen_zhong1" aria-label="haowen_zhong1 profile" data-id="58a6506280e9af69e2997e5e@microsoft.fyre.co" class="fyre-follower fyre-follower-58a6506280e9af69e2997e5e-microsoft-fyre-co"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50hc.png" alt="haowen_zhong1 avatar" onerror="javascript:this.src=&#39;https:\/\/dpstvy7p9whsy.cloudfront.net\/a\/anon\/50hc.png&#39;;"></a><a href="https://docs.microsoft.com/en-us/IIS-Administration/" title="Shashidhar_Rao" aria-label="Shashidhar_Rao profile" data-id="59db1701904cc8316491dcdf@microsoft.fyre.co" class="fyre-follower fyre-follower-59db1701904cc8316491dcdf-microsoft-fyre-co"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50(1).jpg" alt="Shashidhar_Rao avatar" onerror="javascript:this.src=&#39;https:\/\/dpstvy7p9whsy.cloudfront.net\/a\/anon\/50hc.png&#39;;"></a></div></div></div><div class="fyre-editor"><div class="fyre-editor-container fyre-editor-container-focus"><div class="fyre-editor-editable editable fyre-editor-field" id="fyre-editor-8" g_editable="true" role="textbox" contenteditable="true"><p>&nbsp;</p></div><span class="fyre-editor-spinner" style="display: none;"></span><div class="fyre-editor-preview"></div><div class="fyre-editor-media-drawer" style="display: none;"></div><div class="fyre-editor-toolbar"><div class="fyre-mention-menu fyre-mention-menu-vertical" role="menu" aria-haspopup="true" style="user-select: none; display: none;"><div class="fyre-mention-menu-filter" style="user-select: none;"><div style="user-select: none;"></div><input type="text" aria-autocomplete="list" aria-owns=":1t.content-el" aria-expanded="true" tabindex="-1" style="user-select: none;"></div><div class="fyre-mention-menu-content" id=":1t.content-el" style="user-select: none;"><div class="goog-control goog-control-disabled" aria-disabled="true" style="user-select: none;" id=":1q"></div><div class="goog-control goog-control-disabled" aria-disabled="true" style="user-select: none;" id=":1r"></div><div class="goog-control goog-control-disabled" aria-disabled="true" style="user-select: none;" id=":1s"></div><div class="fyre-mention-item fyre-mention-item-twitter" aria-hidden="true" style="user-select: none; display: none;" id=":1u"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50hc.png" class="fyre-mention-item-avatar" alt=""><h4 class="fyre-mention-item-display-name"></h4><span class="fyre-mention-item-twitter"></span></div><div class="fyre-mention-item fyre-mention-item-livefyre" aria-hidden="true" style="user-select: none; display: none;" id=":1v"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50hc.png" class="fyre-mention-item-avatar" alt=""><h4 class="fyre-mention-item-display-name"></h4><span class="fyre-mention-item-livefyre"></span></div></div></div><div class="goog-toolbar goog-toolbar-horizontal" role="toolbar" style="user-select: none;"><div class="goog-toolbar-separator goog-inline-block" role="separator" id=":1n" style="user-select: none;">&nbsp;</div><div class="goog-inline-block fyre-button-left fyre-format-button" role="button" style="user-select: none;" id=":1p" tabindex="0" aria-label="editor format text"><div class="goog-inline-block fyre-button-left-outer-box"><div class="goog-inline-block fyre-button-left-inner-box"></div></div></div><div class="goog-inline-block fyre-button-left fyre-mention-button" role="button" style="user-select: none;" id=":1x" tabindex="0" aria-label="editor mention user"><div class="goog-inline-block fyre-button-left-outer-box"><div class="goog-inline-block fyre-button-left-inner-box"></div></div></div><div class="goog-inline-block fyre-button-left fyre-embed-button" role="button" style="user-select: none; display: none;" id=":1z" tabindex="0" aria-label="editor add media" aria-hidden="true"><div class="goog-inline-block fyre-button-left-outer-box"><div class="goog-inline-block fyre-button-left-inner-box"></div></div></div><div class="goog-inline-block fyre-button-left fyre-raw-button" role="button" style="user-select: none; display: none;" id=":21" tabindex="0" aria-label="editor html embed"><div class="goog-inline-block fyre-button-left-outer-box"><div class="goog-inline-block fyre-button-left-inner-box"></div></div></div><div class="goog-inline-block fyre-button-left fyre-follow-button" role="button" style="user-select: none;" id=":23" tabindex="0" aria-label="editor follow button"><div class="goog-inline-block fyre-button-left-outer-box"><div class="goog-inline-block fyre-button-left-inner-box">+ Follow</div></div></div><div class="goog-inline-block fyre-button-right fyre-share-button" role="button" style="user-select: none;" id=":25" tabindex="0" aria-label="editor share control"><div class="goog-inline-block fyre-button-right-outer-box"><div class="goog-inline-block fyre-button-right-inner-box">Share<label class="fyre-share-counter fyre-share-empty"></label></div></div></div><div class="goog-inline-block fyre-button-right fyre-post-button fyre-post-button-new" role="button" style="user-select: none;" id=":27" tabindex="0" aria-label="editor post comment"><div class="goog-inline-block fyre-button-right-outer-box"><div class="goog-inline-block fyre-button-right-inner-box">Post comment as...</div></div></div></div></div></div><div class="fyre-comment-preview" style="display: none;"><h5>Custom HTML Preview<span class="fyre-icon-remove"></span></h5><div class="fyre-roundedpanel-content fyre-comment-preview-content"><article class="fyre-comment-article"><div class="fyre-comment"><div class="fyre-comment-raw-html"></div></div></article></div></div></div><div class="fyre-input-box-collapsed"></div><div class="fyre-stream-header"><div class="fyre-content-loading" style="display: none;">Loading</div><div class="fyre-stream-sort"><div class="fyre-stream-sort-options"><a class="fyre-stream-sort-newest fyre-stream-sort-selected" aria-selected="true" aria-label="Sort by Newest" tabindex="0">Newest</a><span class="fyre-stream-sort-bar"> | </span><a class="fyre-stream-sort-oldest" aria-selected="false" aria-label="Sort by Oldest" tabindex="0">Oldest</a></div><a class="fyre-stream-sort-back"></a></div></div><div class="fyre-comment-stream"><div class="fyre-stream-content"><article class="fyre-comment-article fyre-comment-hidden" data-message-id="757005308" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="754214707" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-source-0" data-message-id="751244541" data-author-id="5a057c4ceea857366a40957e@microsoft.fyre.co" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper"><div class="fyre-comment-user" data-from="Prem_Cinu" data-author-id="5a057c4ceea857366a40957e@microsoft.fyre.co"><a href="https://docs.microsoft.com/en-us/IIS-Administration/" class="fyre-comment-author"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50(2).jpg" class="fyre-user-avatar" alt="Avatar for Prem_Cinu" onerror="javascript:this.src=&#39;https:\/\/dpstvy7p9whsy.cloudfront.net\/a\/anon\/50hc.png&#39;;"></a><div class="fyre-comment-socialsync fyre-comment-from-undefined"></div><div class="fyre-comment-highlight"></div></div><header class="fyre-comment-head"><a class="fyre-comment-username"><span itemprop="author">Prem_Cinu</span></a> <span class="fyre-comment-user-rating" style="display: none;">5pts</span><span class="fyre-comment-tag fyre-featured" style="display: none;"><span class="fyre-featured-icon"></span><span class="fyre-featured-text">Featured</span><br></span><meta itemprop="dateCreated" content="2017-11-10T10:15:56.000Z"><i class="fyre-social-provider"></i><time class="fyre-comment-date">Nov 10, 2017</time><span class="fyre-comment-archive"></span><div class="fyre-comment-premod"></div><div class="fyre-flag-list"></div></header><section class="fyre-comment-body"><div class="fyre-comment" itemprop="text"><p class="x-hidden-focus"><p>How to access the&nbsp;Microsoft IIS Administration API via webpage on locally ??&nbsp;</p><p><br></p><p class="">Not on&nbsp;<a href="https://manage.iis.net/web-sites" target="_blank" rel="nofollow noreferrer" class="x-hidden-focus">https://manage.iis.net/web-sites</a></p><p class=""><br></p><p class="">On the localhost?</p><p><br></p></p></div></section><footer class="fyre-comment-footer"><div class="fyre-comment-actions"><a class="fyre-flag-link" title="Flag"><span></span>Flag</a><a class="fyre-share-link" title="Share"><span></span>Share</a></div><span class="fyre-comment-like"><span class="fyre-comment-like-count"></span><span class="fyre-comment-like-imgs"></span><a class="fyre-comment-like-btn fyre-comment-action-button">Like</a></span><a class="fyre-comment-reply fyre-comment-action-button">Reply</a><div class="fyre-editor" style="display: none;"></div></footer></div><div class="fyre-comment-divider fyre-divider-active"><a title="Toggle Collapse" class="fyre-comment-collapse" style=""></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"><article class="fyre-comment-article fyre-comment-source-5" data-message-id="756423060" data-author-id="593ed26dc0ed2b1d12e882c2@microsoft.fyre.co" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper"><div class="fyre-comment-user" data-from="jimmyca@MSFT" data-author-id="593ed26dc0ed2b1d12e882c2@microsoft.fyre.co"><a href="https://docs.microsoft.com/en-us/IIS-Administration/" class="fyre-comment-author"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/saved_resource" class="fyre-user-avatar" alt="Avatar for jimmyca@MSFT" onerror="javascript:this.src=&#39;https:\/\/dpstvy7p9whsy.cloudfront.net\/a\/anon\/50hc.png&#39;;"></a><div class="fyre-comment-socialsync fyre-comment-from-undefined"></div><div class="fyre-comment-highlight"></div></div><header class="fyre-comment-head"><a class="fyre-comment-username"><span itemprop="author">jimmyca@MSFT</span></a> <span class="fyre-comment-user-rating" style="display: none;">5pts</span><span class="fyre-user-level fyre-comment-author-tag fyre-moderator">moderator</span><span class="fyre-comment-tag fyre-featured" style="display: none;"><span class="fyre-featured-icon"></span><span class="fyre-featured-text">Featured</span><br></span><meta itemprop="dateCreated" content="2017-12-02T00:25:09.000Z"><i class="fyre-social-provider"></i><time class="fyre-comment-date">Dec 2, 2017</time><span class="fyre-comment-archive"></span><div class="fyre-comment-premod"></div><div class="fyre-flag-list"></div></header><section class="fyre-comment-body"><div class="fyre-comment" itemprop="text"><p><p><a vocab="http://schema.org" typeof="Person" rel="nofollow noreferrer" resource="acct:5a057c4ceea857366a40957e@microsoft.fyre.co" data-lf-handle="" data-lf-provider="livefyre" property="url" target="_blank" class="fyre-mention fyre-mention-livefyre">@<span property="name">Prem_Cinu</span></a> </p><p><br></p><p>There is no version of the web page at manage.iis.net that we distribute for local use. However, since the UI is open source anyone is free to build it and host it locally to access the Microsoft IIS Administration API. The open source project can be found at&nbsp;<a href="https://github.com/Microsoft/IIS.WebManager" target="_blank" rel="nofollow noreferrer">https://github.com/Microsoft/IIS.WebManager</a></p></p></div></section><footer class="fyre-comment-footer"><div class="fyre-comment-actions"><a class="fyre-flag-link" title="Flag"><span></span>Flag</a><a class="fyre-share-link" title="Share"><span></span>Share</a></div><span class="fyre-comment-like"><span class="fyre-comment-like-count"></span><span class="fyre-comment-like-imgs"></span><a class="fyre-comment-like-btn fyre-comment-action-button">Like</a></span><a class="fyre-comment-reply fyre-comment-action-button">Reply</a><div class="fyre-editor" style="display: none;"></div></footer></div><div class="fyre-comment-divider"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="742347779" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"><article class="fyre-comment-article fyre-comment-hidden" data-message-id="749717174" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article></div></div></article><article class="fyre-comment-article fyre-comment-source-5" data-message-id="740073103" data-author-id="59d12a3234b0de2408ad2577@microsoft.fyre.co" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper"><div class="fyre-comment-user" data-from="babula_pradhan" data-author-id="59d12a3234b0de2408ad2577@microsoft.fyre.co"><a href="https://docs.microsoft.com/en-us/IIS-Administration/" class="fyre-comment-author"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/50(3).jpg" class="fyre-user-avatar" alt="Avatar for babula_pradhan" onerror="javascript:this.src=&#39;https:\/\/dpstvy7p9whsy.cloudfront.net\/a\/anon\/50hc.png&#39;;"></a><div class="fyre-comment-socialsync fyre-comment-from-undefined"></div><div class="fyre-comment-highlight"></div></div><header class="fyre-comment-head"><a class="fyre-comment-username"><span itemprop="author">babula_pradhan</span></a> <span class="fyre-comment-user-rating" style="display: none;">5pts</span><span class="fyre-comment-tag fyre-featured" style="display: none;"><span class="fyre-featured-icon"></span><span class="fyre-featured-text">Featured</span><br></span><meta itemprop="dateCreated" content="2017-10-01T17:47:43.000Z"><i class="fyre-social-provider"></i><time class="fyre-comment-date">Oct 1, 2017</time><span class="fyre-comment-archive"></span><div class="fyre-comment-premod"></div><div class="fyre-flag-list"></div></header><section class="fyre-comment-body"><div class="fyre-comment" itemprop="text"><p>Any idea how to debug the source code</p></div></section><footer class="fyre-comment-footer"><div class="fyre-comment-actions"><a class="fyre-flag-link" title="Flag"><span></span>Flag</a><a class="fyre-share-link" title="Share"><span></span>Share</a></div><span class="fyre-comment-like"><span class="fyre-comment-like-count"></span><span class="fyre-comment-like-imgs"></span><a class="fyre-comment-like-btn fyre-comment-action-button">Like</a></span><a class="fyre-comment-reply fyre-comment-action-button">Reply</a><div class="fyre-editor" style="display: none;"></div></footer></div><div class="fyre-comment-divider"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"><article class="fyre-comment-article fyre-comment-hidden" data-message-id="749717012" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="734311161" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="731075972" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="722990848" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="712497617" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="704258049" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="704052181" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="700015107" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="682655156" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="682598279" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"><article class="fyre-comment-article fyre-comment-hidden" data-message-id="692781514" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="678629594" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="677858497" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="668177175" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="668177148" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article><article class="fyre-comment-article fyre-comment-hidden" data-message-id="653225441" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"><article class="fyre-comment-article fyre-comment-hidden" data-message-id="668177190" data-author-id="undefined" itemtype="http://schema.org/Comment" itemscope="itemscope" style=""><div class="fyre-comment-wrapper" style="display: none;"><section class="fyre-comment-deleted"><p>This comment has been deleted</p></section></div><div class="fyre-comment-divider" style="display: none;"><a title="Toggle Collapse" class="fyre-comment-collapse" style="display: none;"></a><div class="fyre-comment-divider"></div></div><div class="fyre-outer-comment-container"><div class="fyre-comment-container fyre-comment-replies fyre-comment-replies-indent"></div></div></article></div></div></article></div><div class="fyre-stream-content-not-found"></div><div class="fyre-stream-more" style="display: none;"><div class="fyre-stream-more-container"><div class="fyre-text">Show More Comments</div><div class="fyre-spinner"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/snake-loader.gif" alt=""></div></div></div></div><div class="fyre-top-content-stream"></div><div class="fyre-thread-breakout-stream"></div><div class="fyre-stream-menu-container"></div></div></div></div>
+		</div>
+
+		<div class="pageActions">
+			<div id="page-actions" ms.cmpgrp="pageactions" data-bi-name="pageactions" role="complementary">
+				<div id="page-actions-content" style="top: 0px; bottom: 24px;">
+					<ul class="action-list">
+							<li>
+									<a href="https://docs.microsoft.com/en-us/IIS-Administration/#comments-container" id="comments-link" ms.cmpnm="comments" data-bi-name="comments" class="x-hidden-focus">
+										<i class="docon docon-comment-lines" aria-hidden="true"></i>Feedback									</a>
+							</li>
+									<li id="contenteditbtn" hidden="">
+										<a href="https://github.com/MicrosoftDocs/IIS.Administration-docs/blob/live/IIS-Administration/index.md" title="Edit This Document" ms.cmpnm="edit" data-bi-name="edit">
+											<i class="icon icon-editor"></i>Edit										</a>
+									</li>
+						<li>
+							<div class="flyout">
+								<a href="https://docs.microsoft.com/en-us/IIS-Administration/#" class="flyout-button x-hidden-focus" title="Share This Document" ms.cmpnm="share" data-bi-name="share"><i class="icon icon-share x-hidden-focus"></i>Share</a>
+								<div class="flyout-container" style="display: none;">
+										<div><a href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2FIIS-Administration%2F%3FWT.mc_id%3Ddocs-twitter&amp;text=Introduction%20to%20the%20Microsoft%20IIS%20Administration%20API%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2FIIS-Administration%2F%3FWT.mc_id%3Ddocs-twitter" class="share-twitter" ms.cmpnm="twitter" data-bi-name="twitter"><i class="icon icon-twitter"></i>Twitter</a></div>
+										<div><a href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2FIIS-Administration%2F%3FWT.mc_id%3Ddocs-linkedin" class="share-linkedin" ms.cmpnm="share-linkedin" data-bi-name="linkedin"><i class="icon icon-linkedin"></i>LinkedIn</a></div>
+										<div><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2FIIS-Administration%2F%3FWT.mc_id%3Ddocs-facebook" class="share-facebook" ms.cmpnm="facebook" data-bi-name="facebook"><i class="icon icon-facebook"></i>Facebook</a></div>
+										<div><a href="mailto:?subject=%5BShared%20Article%5D%20Introduction%20to%20the%20Microsoft%20IIS%20Administration%20API%20%7C%20Microsoft%20Docs&amp;body=Introduction%20to%20the%20Microsoft%20IIS%20Administration%20API%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fen-us%2FIIS-Administration%2F%3FWT.mc_id%3Ddocs-email" class="share-email x-hidden-focus" ms.cmpnm="email" data-bi-name="email"><i class="icon icon-email"></i>Email</a></div>
+								</div>
+							</div>
+						</li>
+						<li class="typeSep">|</li>
+						<li>
+							<label for="theme-selector">Theme</label>
+							<select id="theme-selector" data-bi-name="select-theme" class="x-hidden-focus">
+								
+								<option value="">Light</option>
+								<option value="theme_night">Dark</option>
+							</select>
+						</li>
+					</ul>
+
+						<nav id="side-doc-outline" class="doc-outline" ms.cmpnm="intopic toc" data-bi-name="intopic toc" role="navigation" aria-label="On page navigation" hidden="">
+							<h3>In this article</h3>
+						</nav>
+
+				</div>
+			</div>
+		</div>
+
+		<ul class="breadcrumbs" ms.cmpgrp="breadcrumb" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb"><li></li></ul>
+
+		<div class="sidebar" id="sidebar" ms.cmpgrp="left toc" data-bi-name="left toc" role="navigation" aria-label="Main Navigation">
+			<div id="sidebarContent" style="top: 0px; bottom: 24px;">
+				<div class="filterHolder">
+				<form class="tocFilter"><input placeholder="Filter" aria-label="Filter" type="search" _vkenabled="true"><a href="https://docs.microsoft.com/en-us/IIS-Administration/#" title="Clear Filter" class="clearInput"><span class="visually-hidden">Clear Filter</span></a></form><div class="emptyFilterMessage">No results</div></div>
+				<nav class="toc x-hidden-focus" role="application"><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li class="selectedHolder"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" class="selected" data-showme="true" href="https://docs.microsoft.com/en-us/IIS-Administration/" data-text="introduction ">Introduction</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/getting-started" data-text="getting started ">Getting Started</a></li><li aria-expanded="false" tabindex="0" aria-treeitem="true" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><span data-text="configuration ">Configuration</span><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/configuration/appsettings.json" data-text="application settings ">Application Settings</a></li></ul></li><li aria-expanded="false" tabindex="0" aria-treeitem="true" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)"><span data-text="security ">Security</span><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/security/access-tokens" data-text="access tokens ">Access Tokens</a></li><li aria-expanded="false" tabindex="0" aria-treeitem="true" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><span data-text="integrated security ">Integrated Security</span><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/security/integrated/web.config" data-text="web.config ">Web.<wbr>Config</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/security/integrated/windows" data-text="windows authentication ">Windows Authentication</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/security/integrated/authorization" data-text="authorization ">Authorization</a></li></ul></li></ul></li><li aria-expanded="false" tabindex="0" aria-treeitem="true" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><span data-text="api explorer ">API Explorer</span><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api-explorer/" data-text="api explorer ">API Explorer</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api-explorer/resource-manipulation" data-text="resource manipulation ">Resource Manipulation</a></li></ul></li><li aria-expanded="false" tabindex="0" aria-treeitem="true" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><span data-text="management portal ">Management Portal</span><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/management-portal/connecting" data-text="connecting ">Connecting</a></li></ul></li><li aria-expanded="false" tabindex="0" aria-treeitem="true" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><span data-text="api ">API</span><ul aria-treegrid="true" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/application-pools" data-text="application pools ">Application Pools</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/sites" data-text="sites ">Sites</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/applications" data-text="applications ">Applications</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/virtual-directories" data-text="virtual directories ">Virtual Directories</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/worker-processes" data-text="worker processes ">Worker Processes</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/certificates" data-text="certificates ">Certificates</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/files" data-text="files ">Files</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/monitoring" data-text="monitoring ">Monitoring</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/centralized-certificates" data-text="central certificate store ">Central Certificate Store</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/request-tracing" data-text="request tracing ">Request Tracing</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/api-keys" data-text="api keys ">API Keys</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/installing-features" data-text="installing features ">Installing Features</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/crud" data-text="crud ">CRUD</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/hal" data-text="hal ">HAL</a></li><li><a tabindex="0" href="https://docs.microsoft.com/en-us/IIS-Administration/api/iis.administration" data-text="api specification ">API Specification</a></li></ul></li></ul></nav>
+				<div class="pdfDownloadHolder"></div>
+			</div>
+			<div class="tocSpace"></div>
+		</div>
+
+		<div id="menu-nav" class="dropdown-container">
+			<div class="dropdown dropdown-full mobilenavi">
+					<select><option value="/en-us/IIS-Administration/" selected="selected">Introduction</option><option value="/en-us/IIS-Administration/getting-started">Getting Started</option><option class="noLink">Configuration</option><option value="/en-us/IIS-Administration/configuration/appsettings.json">&nbsp;&nbsp;&nbsp;Application Settings</option><option class="noLink">Security</option><option value="/en-us/IIS-Administration/security/access-tokens">&nbsp;&nbsp;&nbsp;Access Tokens</option><option class="noLink">&nbsp;&nbsp;&nbsp;Integrated Security</option><option value="/en-us/IIS-Administration/security/integrated/web.config">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web.Config</option><option value="/en-us/IIS-Administration/security/integrated/windows">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Windows Authentication</option><option value="/en-us/IIS-Administration/security/integrated/authorization">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Authorization</option><option class="noLink">API Explorer</option><option value="/en-us/IIS-Administration/api-explorer/">&nbsp;&nbsp;&nbsp;API Explorer</option><option value="/en-us/IIS-Administration/api-explorer/resource-manipulation">&nbsp;&nbsp;&nbsp;Resource Manipulation</option><option class="noLink">Management Portal</option><option value="/en-us/IIS-Administration/management-portal/connecting">&nbsp;&nbsp;&nbsp;Connecting</option><option class="noLink">API</option><option value="/en-us/IIS-Administration/api/application-pools">&nbsp;&nbsp;&nbsp;Application Pools</option><option value="/en-us/IIS-Administration/api/sites">&nbsp;&nbsp;&nbsp;Sites</option><option value="/en-us/IIS-Administration/api/applications">&nbsp;&nbsp;&nbsp;Applications</option><option value="/en-us/IIS-Administration/api/virtual-directories">&nbsp;&nbsp;&nbsp;Virtual Directories</option><option value="/en-us/IIS-Administration/api/worker-processes">&nbsp;&nbsp;&nbsp;Worker Processes</option><option value="/en-us/IIS-Administration/api/certificates">&nbsp;&nbsp;&nbsp;Certificates</option><option value="/en-us/IIS-Administration/api/files">&nbsp;&nbsp;&nbsp;Files</option><option value="/en-us/IIS-Administration/api/monitoring">&nbsp;&nbsp;&nbsp;Monitoring</option><option value="/en-us/IIS-Administration/api/centralized-certificates">&nbsp;&nbsp;&nbsp;Central Certificate Store</option><option value="/en-us/IIS-Administration/api/request-tracing">&nbsp;&nbsp;&nbsp;Request Tracing</option><option value="/en-us/IIS-Administration/api/api-keys">&nbsp;&nbsp;&nbsp;API Keys</option><option value="/en-us/IIS-Administration/api/installing-features">&nbsp;&nbsp;&nbsp;Installing Features</option><option value="/en-us/IIS-Administration/api/crud">&nbsp;&nbsp;&nbsp;CRUD</option><option value="/en-us/IIS-Administration/api/hal">&nbsp;&nbsp;&nbsp;HAL</option><option value="/en-us/IIS-Administration/api/iis.administration">&nbsp;&nbsp;&nbsp;API Specification</option></select>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container or-t-ml or-pc" style="z-index: 1000;" data-bi-name="rating-control"><div class="or-c-pf or-o" style="opacity: 1;"><div class="or-lw or-o or-c"><div class="or-c-v or-o"><h3 class="or-t or-o">Is this page helpful?</h3><table class="or-lw or-o"><tbody class="or-so"><tr class="or-so"><td class="or-so"><button type="button" role="button" aria-label="Yes, this page is helpful." class="or-b or-o or-f" data-bi-name="page-useful-yes" data-bi-sat="1"><span class="or-t or-o or-so or-c">Yes</span></button></td><td class="or-so"><button type="button" role="button" aria-label="No, this page is not helpful." class="or-b or-o or-f" data-bi-name="page-useful-no" data-bi-sat="0"><span class="or-t or-o or-so or-c">No</span></button></td></tr></tbody></table></div></div><button type="button" role="button" aria-label="Close feedback" class="or-a or-o or-f" data-bi-name="page-useful-close"><span class="or-g or-o or-so or-c"><svg xmlns="http://www.w3.org/2000/svg" focusable="false" class="or-so" viewBox="0 0 20 20"><path d="M6 6L14 14M14 6L6 14"></path></svg></span></button></div></div>
+
+	<div class="container footerContainer">
+<footer id="footer" ms.pgarea="footer" data-bi-name="footer" class="footer-layout">
+  <div class="container" role="contentinfo">
+
+    <a data-mscc-ic="false" id="locale-selector-link" href="https://docs.microsoft.com/en-us/locale?target=%2Fen-us%2FIIS-Administration%2F" data-bi-name="select-locale" ms.cmpnm="select-locale">English (United States)</a>
+
+    <ul class="links" ms.cmpgrp="footerlinks" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" ms.cmpnm="bloglink" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" ms.cmpnm="contributorGuide" data-bi-name="contributorGuide">How to contribute</a></li>
+		<li><a data-mscc-ic="false" href="https://privacy.microsoft.com/en-us/" ms.cmpnm="privacy" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" ms.cmpnm="termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" ms.cmpnm="feedback" data-bi-name="feedback">Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" ms.cmpnm="trademarks" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+  </div>
+</footer>	</div>
+
+	<script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/7c40ce1aa389becd6531.conceptual.js.Без названия"></script>
+
+
+<input type="hidden" id="has-qtest-explorer-add-on"><div class="ha"><div id="virtualKeyboardChromeExtensionOverlayScrollExtend" style="display: none; height:500px">
+</div>
+<div id="virtualKeyboardChromeExtensionOverlayDemand" style="display: none;">
+</div>
+<div id="virtualKeyboardChromeExtensionOverlaySettings" _state="closed" class="virtualKeyboardChromeExtensionOverlay" style="display: none;">
+	<ul id="virtualKeyboardChromeExtensionOverlaySettingsUl">
+		<li class="virtualKeyboardChromeExtensionOverlayButton" _action="setKeyboard" _layout="en">EN</li>
+		<li class="virtualKeyboardChromeExtensionOverlayButton" _action="setKeyboard" _layout="ru">RU</li>
+	</ul>
+</div>
+<div id="virtualKeyboardChromeExtensionUrlBar" style="top: -100px;">
+	<form onsubmit="this.action = &#39;http://&#39;+document.getElementById(&#39;virtualKeyboardChromeExtensionUrlBarTextBox&#39;).value;">
+	<input type="text" id="virtualKeyboardChromeExtensionUrlBarTextBox" placeholder="http://" _vkenabled="true">
+	<input type="submit" value="Go">
+	</form>
+</div>
+<div id="virtualKeyboardChromeExtension" class="">
+	<div id="virtualKeyboardChromeExtensionDraggableLeft"></div>
+	<div id="virtualKeyboardChromeExtensionDraggableRight"></div>
+	<div id="virtualKeyboardChromeExtensionNumberBarKbdInput" style="display: none;">
+		<table cellpadding="2">
+			<tbody><tr>
+				<td class="kbdH kbdClick" _key="7" _vkenabled="true"><span>7</span></td>
+				<td class="kbdH kbdClick" _key="8" _vkenabled="true"><span>8</span></td>
+				<td class="kbdH kbdClick" _key="9" _vkenabled="true"><span>9</span></td>
+				<td class="kbdH kbdClick" _key="#" _vkenabled="true"><span>#</span></td>
+				<td class="kbdD kbdClick" _key="Backspace" rowspan="2" _vkenabled="true"><span>Back</span></td>
+			</tr>
+		</tbody></table>	
+		<table cellpadding="2">
+			<tbody><tr>
+				<td class="kbdH kbdClick" _key="4" _vkenabled="true"><span>4</span></td>
+				<td class="kbdH kbdClick" _key="5" _vkenabled="true"><span>5</span></td>
+				<td class="kbdH kbdClick" _key="6" _vkenabled="true"><span>6</span></td>
+				<td class="kbdH kbdClick" _key="-" _vkenabled="true"><span>-</span></td>
+				<td class="kbdH kbdClick" _key=")" _vkenabled="true"><span>)</span></td>
+			</tr>
+		</tbody></table>	
+		<table cellpadding="2">
+			<tbody><tr>
+				<td class="kbdH kbdClick" _key="1" _vkenabled="true"><span>1</span></td>
+				<td class="kbdH kbdClick" _key="2" _vkenabled="true"><span>2</span></td>
+				<td class="kbdH kbdClick" _key="3" _vkenabled="true"><span>3</span></td>
+				<td class="kbdH kbdClick" _key="+" _vkenabled="true"><span>+</span></td>
+				<td class="kbdH kbdClick" _key="(" _vkenabled="true"><span>(</span></td>
+			</tr>
+		</tbody></table>	
+		<table cellpadding="2">
+			<tbody><tr>
+				<td class="kbdH kbdClick" _key="0" _vkenabled="true"><span>0</span></td>
+				<td class="kbdH kbdClick" _key="." _vkenabled="true"><span>.</span></td>
+				<td class="kbdH kbdClick" _key="*" _vkenabled="true"><span>*</span></td>
+				<td class="kbdH kbdClick" _key="$" _vkenabled="true"><span>$</span></td>
+				<td class="kbdD kbdClick" _key="Enter" _vkenabled="true"><span>Enter</span></td>
+			</tr>
+		</tbody></table>	
+	</div>
+	<div id="virtualKeyboardChromeExtensionMainKbd">
+		<table cellpadding="2" id="virtualKeyboardChromeExtensionNumberBarKbd1">
+			<tbody><tr>
+				<td class="kbdH kbNumberMain kbdClick " _key="1" _vkenabled="true"><span>1</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="2" _vkenabled="true"><span>2</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="3" _vkenabled="true"><span>3</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="4" _vkenabled="true"><span>4</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="5" _vkenabled="true"><span>5</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="6" _vkenabled="true"><span>6</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="7" _vkenabled="true"><span>7</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="8" _vkenabled="true"><span>8</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="9" _vkenabled="true"><span>9</span></td>
+				<td class="kbdH kbNumberMain kbdClick " _key="0" _vkenabled="true"><span>0</span></td>
+			</tr>
+		</tbody></table>
+		<div id="virtualKeyboardChromeExtensionMainKbdPH"></div>
+	</div>
+	<div id="virtualKeyboardChromeExtensionMainNumbers" style="display: none;">
+		<table cellpadding="2">
+			<tbody><tr>
+				<td class="kbdH kbdClick" _key="_" _vkenabled="true"><span>_</span></td>
+				<td class="kbdH kbdClick" _key="\" _vkenabled="true"><span>\</span></td>
+				<td class="kbdH kbdClick" _key=":" _vkenabled="true"><span>:</span></td>
+				<td class="kbdH kbdClick" _key=";" _vkenabled="true"><span>;</span></td>
+				<td class="kbdH kbdClick" _key=")" _vkenabled="true"><span>)</span></td>
+				<td class="kbdH kbdClick" _key="(" _vkenabled="true"><span>(</span></td>
+				<td class="kbdH kbdClick" _key="/" _vkenabled="true"><span>/</span></td>
+				<td class="kbdH kbdClick" _key="^" _vkenabled="true"><span>^</span></td>
+				<td class="kbdH kbdClick" _key="1" _vkenabled="true"><span>1</span></td>
+				<td class="kbdH kbdClick" _key="2" _vkenabled="true"><span>2</span></td>
+				<td class="kbdH kbdClick" _key="3" _vkenabled="true"><span>3</span></td>
+				<td style="width: 2px;"><span></span></td>
+				<td class="kbdD kbdClick" _key="Backspace" _vkenabled="true"><span class="kBack"></span></td>
+			</tr>
+			<tr>
+				<td class="kbdH kbdClick" _key="€" _vkenabled="true"><span>€</span></td>
+				<td class="kbdH kbdClick" _key="$" _vkenabled="true"><span>$</span></td>
+				<td class="kbdH kbdClick" _key="£" _vkenabled="true"><span>£</span></td>
+				<td class="kbdH kbdClick" _key="&amp;" _vkenabled="true"><span>&amp;</span></td>
+				<td class="kbdH kbdClick" _key="@" _vkenabled="true"><span>@</span></td>
+				<td class="kbdH kbdClick" _key="&quot;" _vkenabled="true"><span>"</span></td>
+				<td class="kbdH kbdClick" _key="*" _vkenabled="true"><span>*</span></td>
+				<td class="kbdH kbdClick" _key="~" _vkenabled="true"><span>~</span></td>
+				<td class="kbdH kbdClick" _key="4" _vkenabled="true"><span>4</span></td>
+				<td class="kbdH kbdClick" _key="5" _vkenabled="true"><span>5</span></td>
+				<td class="kbdH kbdClick" _key="6" _vkenabled="true"><span>6</span></td>
+				<td style="width: 2px;"><span></span></td>
+				<td class="kbdD kbdClick" _key="Enter" _vkenabled="true"><span class="kEnter"></span></td>
+			</tr>
+			<tr>
+				<td class="kbdH kbdClick" _key="?" _vkenabled="true"><span>?</span></td>
+				<td class="kbdH kbdClick" _key="!" _vkenabled="true"><span>!</span></td>
+				<td class="kbdH kbdClick" _key="&#39;" _vkenabled="true"><span>'</span></td>
+				<td class="kbdH kbdClick" _key="_" _vkenabled="true"><span>_</span></td>
+				<td class="kbdH kbdClick" _key="&lt;" _vkenabled="true"><span>&lt;</span></td>
+				<td class="kbdH kbdClick" _key="&gt;" _vkenabled="true"><span>&gt;</span></td>
+				<td class="kbdH kbdClick" _key="-" _vkenabled="true"><span>-</span></td>
+				<td class="kbdH kbdClick" _key="`" _vkenabled="true"><span>`</span></td>
+				<td class="kbdH kbdClick" _key="7" _vkenabled="true"><span>7</span></td>
+				<td class="kbdH kbdClick" _key="8" _vkenabled="true"><span>8</span></td>
+				<td class="kbdH kbdClick" _key="9" _vkenabled="true"><span>9</span></td>
+				<td style="width: 2px;"><span></span></td>
+				<td class="kbdD kbdClick" _key="&amp;123" _vkenabled="true"><span class="kAbc">ABC</span></td>
+			</tr>
+			<tr>
+				<td class="kbdH kbdClick" _key="[" _vkenabled="true"><span>[</span></td>
+				<td class="kbdH kbdClick" _key="]" _vkenabled="true"><span>]</span></td>
+				<td class="kbdH kbdClick" _key="{" _vkenabled="true"><span>{</span></td>
+				<td class="kbdH kbdClick" _key="}" _vkenabled="true"><span>}</span></td>
+				<td class="kbdH kbdClick" _key="#" _vkenabled="true"><span>#</span></td>
+				<td class="kbdH kbdClick" _key="," _vkenabled="true"><span>,</span></td>
+				<td class="kbdH kbdClick" _key="+" _vkenabled="true"><span>+</span></td>
+				<td class="kbdH kbdClick" _key="%" _vkenabled="true"><span>%</span></td>
+				<td colspan="2" class="kbdH kbdClick" _key="0" _vkenabled="true"><span>0</span></td>
+				<td class="kbdD kbdClick" _key="." _vkenabled="true"><span>.</span></td>
+				<td style="width: 2px;"><span></span></td>
+				<td class="kbdD kbdClick" _key="Close" _vkenabled="true"><span class="kClose"></span></td>
+			</tr>
+		</tbody></table>	
+	</div>
+</div></div><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/translate_24dp.png" width="20" height="20" alt="Google Переводчик"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Исходный текст</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Предложить лучший вариант перевода</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><div></div><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/open-rating.entry.min.js.Без названия" async="" defer=""></script><script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/Livefyre.js.Без названия" async="" defer=""></script><script src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/open-commenting.entry.min.js.Без названия" async="" defer=""></script><div style="display: none;"></div><style> .humane, .humane-libnotify { position: fixed; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -ms-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out; transition: all 0.3s ease-out; z-index: 100000; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100); } .humane, .humane-libnotify { font-family: Ubuntu, Arial, sans-serif; text-align: center; font-size: 15px; top: 10px; right: 10px; opacity: 0; width: 150px; color: #fff; padding: 10px; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABQCAYAAADYxx/bAAAABmJLR0QA/wD/AP+gvaeTAAAANElEQVQYlWNgYGB4ysTAwMDAxMjICCUQXDQWAwMDAxMTExMedcRyB6d5CAMQ5hGrjSrmAQBQdgIXlosSTwAAAABJRU5ErkJggg=='); background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,0,0.9)), color-stop(1, rgba(50,50,50,0.9))) no-repeat; background: -moz-linear-gradient(top, rgba(0,0,0,0.9) 0%, rgba(50,50,50,0.9) 100%) no-repeat; background: -webkit-linear-gradient(top, rgba(0,0,0,0.9) 0%, rgba(50,50,50,0.9) 100%) no-repeat; background: -ms-linear-gradient(top, rgba(0,0,0,0.9) 0%, rgba(50,50,50,0.9) 100%) no-repeat; background: -o-linear-gradient(top, rgba(0,0,0,0.9) 0%, rgba(50,50,50,0.9) 100%) no-repeat; background: linear-gradient(top, rgba(0,0,0,0.9) 0%, rgba(50,50,50,0.9) 100%) no-repeat; *background-color: #000; -webkit-border-radius: 5px; border-radius: 5px; -webkit-box-shadow: 0 4px 4px -4px #000; box-shadow: 0 4px 4px -4px #000; -moz-transform: translateY(-40px); -webkit-transform: translateY(-40px); -ms-transform: translateY(-40px); -o-transform: translateY(-40px); transform: translateY(-40px); } .humane p, .humane-libnotify p, .humane ul, .humane-libnotify ul { margin: 0; padding: 0; } .humane ul, .humane-libnotify ul { list-style: none; } .humane.humane-libnotify-info, .humane-libnotify.humane-libnotify-info { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABQCAYAAADYxx/bAAAABmJLR0QA/wD/AP+gvaeTAAAAMUlEQVQYlWNgYDB6ysTAwMDAxMDACCcYUFkMDEwMDEwMBNVhkxg65jGhmke6M6hgHgBSdgHnpZwADwAAAABJRU5ErkJggg=='); background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,0,50,0.9)), color-stop(1, rgba(0,0,100,0.9))) no-repeat; background: -moz-linear-gradient(top, rgba(0,0,50,0.9) 0%, rgba(0,0,100,0.9) 100%) no-repeat; background: -webkit-linear-gradient(top, rgba(0,0,50,0.9) 0%, rgba(0,0,100,0.9) 100%) no-repeat; background: -ms-linear-gradient(top, rgba(0,0,50,0.9) 0%, rgba(0,0,100,0.9) 100%) no-repeat; background: -o-linear-gradient(top, rgba(0,0,50,0.9) 0%, rgba(0,0,100,0.9) 100%) no-repeat; background: linear-gradient(top, rgba(0,0,50,0.9) 0%, rgba(0,0,100,0.9) 100%) no-repeat; *background-color: #030; } .humane.humane-libnotify-success, .humane-libnotify.humane-libnotify-success { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABQCAYAAADYxx/bAAAABmJLR0QA/wD/AP+gvaeTAAAAMUlEQVQYlWNgMGJ4ysTAwMDAxMAIJxhQWQwMDEwMTKgS2NRhkxg65jGhmke6M6hhHgBS2QHn2LzhygAAAABJRU5ErkJggg=='); background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(0,50,0,0.9)), color-stop(1, rgba(0,100,0,0.9))) no-repeat; background: -moz-linear-gradient(top, rgba(0,50,0,0.9) 0%, rgba(0,100,0,0.9) 100%) no-repeat; background: -webkit-linear-gradient(top, rgba(0,50,0,0.9) 0%, rgba(0,100,0,0.9) 100%) no-repeat; background: -ms-linear-gradient(top, rgba(0,50,0,0.9) 0%, rgba(0,100,0,0.9) 100%) no-repeat; background: -o-linear-gradient(top, rgba(0,50,0,0.9) 0%, rgba(0,100,0,0.9) 100%) no-repeat; background: linear-gradient(top, rgba(0,50,0,0.9) 0%, rgba(0,100,0,0.9) 100%) no-repeat; *background-color: #030; } .humane.humane-libnotify-error, .humane-libnotify.humane-libnotify-error { background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADICAYAAAAp8ov1AAAABmJLR0QA/wD/AP+gvaeTAAAAPklEQVQokWMwYmB4ysTAwMCATjASFsOmBBvBRJ7x+O0g0wCS7CDTH/RwH7X9MVDuwyaG032D2M2UeIYO7gMAqt8C19Bn7+YAAAAASUVORK5CYII='); background: -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(50,0,0,0.9)), color-stop(1, rgba(100,0,0,0.9))) no-repeat; background: -moz-linear-gradient(top, rgba(50,0,0,0.9) 0%, rgba(100,0,0,0.9) 100%) no-repeat; background: -webkit-linear-gradient(top, rgba(50,0,0,0.9) 0%, rgba(100,0,0,0.9) 100%) no-repeat; background: -ms-linear-gradient(top, rgba(50,0,0,0.9) 0%, rgba(100,0,0,0.9) 100%) no-repeat; background: -o-linear-gradient(top, rgba(50,0,0,0.9) 0%, rgba(100,0,0,0.9) 100%) no-repeat; background: linear-gradient(top, rgba(50,0,0,0.9) 0%, rgba(100,0,0,0.9) 100%) no-repeat; *background-color: #300; } .humane.humane-animate, .humane-libnotify.humane-libnotify-animate { opacity: 1; -moz-transform: translateY(0); -webkit-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); } .humane.humane-animate:hover, .humane-libnotify.humane-libnotify-animate:hover { opacity: 0.2; } .humane.humane-animate, .humane-libnotify.humane-libnotify-js-animate { opacity: 1; -moz-transform: translateY(0); -webkit-transform: translateY(0); -ms-transform: translateY(0); -o-transform: translateY(0); transform: translateY(0); } .humane.humane-animate:hover, .humane-libnotify.humane-libnotify-js-animate:hover { opacity: 0.2; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20); } .gi-assertion-select * { cursor: crosshair !important; } .gi-assertion-select *:hover { outline: 1px dotted rgba(0, 0, 0, 1); } .gi-assertion-selected { outline: 3px solid rgba(0, 170, 0, 1) !important; } </style><link rel="stylesheet" type="text/css" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/open-commenting.ui.v1.0.2-7-g1b78816.master.min.css"><link rel="stylesheet" type="text/css" href="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/open-commenting.ui.docs.v1.0.2-7-g1b78816.master.min.css"><script type="text/javascript" src="./Introduction to the Microsoft IIS Administration API _ Microsoft Docs_files/open-rating.ui-v0.6.1-97-g14612aa.master.min.js.Без названия"></script><div id="fyre-messenger-1"></div><div style="position: absolute; display: none;"><div class="tooltip">Shashidhar_Rao</div><div class="arrow-down"></div></div><div style="position: absolute; display: none;"><div class="tooltip">haowen_zhong1</div><div class="arrow-down"></div></div><div style="position: absolute; display: none;"><div class="tooltip">Martin_Schvartzman</div><div class="arrow-down"></div></div><div class="fyre-hovercard" style="display: none;"><div class="fyre-hovercard-body"></div><div class="fyre-hovercard-arrow"></div></div><div class="lf"><div class="lf-popover lf-thread-popover"><div class="lf-thread-content lf-popover-content" role="dialog" aria-label="Sidenote Dialog"></div>
+<div class="lf-popover-arrow"></div>
+</div></div></body></html>

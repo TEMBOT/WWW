@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+<!-- 
+  Visual Studio global web project settings.
+-->
+<VisualWebDeveloper>
+
+  <iisExpressSettings windowsAuthentication="enabled" anonymousAuthentication="enabled" useClassicPipelineMode="false" sslPort="44326"/>
+
+  <comReferences>
+    <reference Name="interop.vxwebsiteextensibility" ID="{D1D73F2C-C7A9-4592-A570-4468DF3C0618}\1.0\0"/>
+    <reference Name="interop.wmplib" ID="{6BF52A50-394A-11D3-B153-00C04F79FAA6}\1.0\0"/>
+    <reference Name="interop.msvidctllib" ID="{B0EDF154-910A-11D2-B632-00C04F79498E}\1.0\0"/>
+    <reference Name="interop.wmplauncher" ID="{5CB42160-CD7C-4806-9367-1C4A65153F4A}\1.0\0"/>
+    <reference Name="interop.iwshruntimelibrary" ID="{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}\1.0\0"/>
+    <reference Name="interop.wmpdxmlib" ID="{73F0DD5C-D071-46B6-A8BF-897C84EAAC49}\1.0\0"/>
+    <reference Name="interop.wmlss" ID="{C21E9CE5-B317-463B-A1B1-B5E36EED59D0}\1.0\0"/>
+    <reference Name="interop.win32_tpmlib" ID="{61E207A5-827C-42E9-ADFA-165C6A745EE4}\1.0\0"/>
+    <reference Name="interop.mediaplayer" ID="{22D6F304-B0F6-11D0-94AB-0080C74C7E95}\1.0\0"/>
+  </comReferences>
+</VisualWebDeveloper>
